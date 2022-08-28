@@ -32,10 +32,6 @@ namespace BusinessLayer
             return result; // Return 
         }
 
-
-    } //EC
-} //EN
-
         private Credentials? _CurrentCredentials = null;
 
         public async Task<bool> LoginAsync(string email, string password)
