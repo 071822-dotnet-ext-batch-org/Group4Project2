@@ -41,19 +41,14 @@ namespace OurBooksAPI.Controllers
         /// <param name="InStock"></param>
         /// <param name="Cost"></param>
         /// <returns></returns>
-        [HttpGet("Display_Product")] //create GET request in API
+        [HttpGet("DisplayProduct/{ProductId}/{BookName}/{NumberPages}/{Genre}/{Author}/{InStock}/{Cost}/")] // API Get request
         public async Task<ActionResult<List<DisplayDTO>>> DisplayProductAsync(string? ProductId, string? BookName, int? NumberPages, string? Genre, string? Author, int? InStock, decimal? Cost)
-        {   // send list to the API
-            List<DisplayDTO> result = await this._business.DisplayProductAsync(ProductId, BookName, NumberPages, Genre, Author, InStock, Cost);
-            if (ModelState.IsValid)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return null;
-            }
+        {
             
+            // send list to the API
+            List<DisplayDTO> result = await this._business.DisplayProductAsync(ProductId, BookName, NumberPages, Genre, Author, InStock, Cost);
+
+            return Ok(result); // Return status code 200
         }
 
 

@@ -16,13 +16,13 @@ namespace RepositoryLayer
         /// <summary>
         /// #3 Display the products and their information
         /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="bookName"></param>
-        /// <param name="numberPages"></param>
-        /// <param name="genre"></param>
-        /// <param name="author"></param>
-        /// <param name="inStock"></param>
-        /// <param name="cost"></param>
+        /// <param name= "productId"></param>
+        /// <param name= "bookName"></param>
+        /// <param name= "numberPages"></param>
+        /// <param name= "genre"></param>
+        /// <param name= "author"></param>
+        /// <param name= "inStock"></param>
+        /// <param name= "cost"></param>
         /// <returns></returns>
         public async Task<List<DisplayDTO>> DisplayProductAsync(string? productId, string? bookName, int? numberPages, string? genre, string? author, int? inStock, decimal? cost)
         {   // Set Azure connection an the SQL query
@@ -50,7 +50,6 @@ namespace RepositoryLayer
                 return rtnList; //return list
 
             }
-
         }
 
 

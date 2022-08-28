@@ -33,8 +33,8 @@ namespace BusinessLayer
         }
 
 
-    } //EC
-} //EN
+    
+
 
         private Credentials? _CurrentCredentials = null;
 
