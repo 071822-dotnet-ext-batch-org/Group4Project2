@@ -25,21 +25,22 @@ namespace OurBooksAPI.Controllers
         //private Business _business = new Business();
 
         //Register a new account with username and password 
-        [HttpPost("RegisterAccount")]
-        //add new customer accounts to the database
- 
+        [HttpPost("RegisterAccount")]//add new customer accounts to the database
         public async Task<ActionResult<RegisterAccount>> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, int phone, string? email, string? isAdmin)
         {
-
             RegisterAccount customerInfo = await this._business.RegisterAccountAsync(userId, firstName, lastName, deliveryAddress, phone, email, isAdmin);
             return Ok();
-
         }
 
-
-
     }
-
-
-
 }
+
+
+
+
+
+
+
+
+        
+ 
