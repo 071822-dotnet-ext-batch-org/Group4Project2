@@ -1,3 +1,4 @@
+
 using System.Globalization;
 using System.Net.Http.Headers;
 using ModelsLayer;
@@ -33,8 +34,13 @@ namespace BusinessLayer
         }
 
 
-    } //EC
-} //EN
+//method to register a new account and input new customer info
+        public async Task<RegisterAccount> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
+        {
+            RegisterAccount customerInfo = await this._repo.RegisterAccountAsync(userId, firstName, lastName, deliveryAddress, phone, email, isAdmin);
+            return customerInfo;
+            
+        }
 
         private Credentials? _CurrentCredentials = null;
 
