@@ -14,7 +14,7 @@ namespace BusinessLayer
         //private Repository _repo = new Repository();
 
         //method to register a new account and input new customer info
-        public async Task<RegisterAccount> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, int phone, string? email, string? isAdmin)
+        public async Task<RegisterAccount> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
         {
             RegisterAccount customerInfo = await this._repo.RegisterAccountAsync(userId, firstName, lastName, deliveryAddress, phone, email, isAdmin);
             return customerInfo;

@@ -12,7 +12,7 @@ using ModelsLayer;
 
 namespace OurBooksAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[Controller]")]
     [ApiController]
     public class Controller : ControllerBase
     {
@@ -26,7 +26,7 @@ namespace OurBooksAPI.Controllers
 
         //Register a new account with username and password 
         [HttpPost("RegisterAccount")]//add new customer accounts to the database
-        public async Task<ActionResult<RegisterAccount>> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, int phone, string? email, string? isAdmin)
+        public async Task<ActionResult<RegisterAccount>> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
         {
             RegisterAccount customerInfo = await this._business.RegisterAccountAsync(userId, firstName, lastName, deliveryAddress, phone, email, isAdmin);
             return Ok();
