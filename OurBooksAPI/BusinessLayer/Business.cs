@@ -33,7 +33,6 @@ namespace BusinessLayer
             return result; // Return 
         }
 
-
 //method to register a new account and input new customer info
         public async Task<RegisterAccount> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
         {
@@ -41,6 +40,7 @@ namespace BusinessLayer
             return customerInfo;
             
         }
+
 
         private Credentials? _CurrentCredentials = null;
 
