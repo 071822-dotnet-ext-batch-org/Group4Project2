@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using System.Reflection;
 using System;
 using System.Collections.Generic;
@@ -18,8 +18,6 @@ namespace OurBooksAPI.Controllers
     [Route("[Controller]")]
     [ApiController]
     public class Controller : ControllerBase
-
-
     {
 
         private Business _business = new Business(); // Creating a new business connection object
@@ -31,19 +29,11 @@ namespace OurBooksAPI.Controllers
             this._businessLayer = new Business();
         }
         */
-        
-        //Register a new account with username and password 
-        [HttpPost("RegisterAccount")]//add new customer accounts to the database
-        public async Task<ActionResult<RegisterAccount>> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
-        {
-            RegisterAccount customerInfo = await this._business.RegisterAccountAsync(userId, firstName, lastName, deliveryAddress, phone, email, isAdmin);
-            return Ok();
-        }
 
         /// <summary>
-        /// #3 Display products
+        /// #3 Filter and display products API request
         /// </summary>
-        /// <param name="ProductId"></param>
+        /// <param name="Isbn"></param>
         /// <param name="BookName"></param>
         /// <param name="NumberPages"></param>
         /// <param name="Genre"></param>
@@ -51,18 +41,14 @@ namespace OurBooksAPI.Controllers
         /// <param name="InStock"></param>
         /// <param name="Cost"></param>
         /// <returns></returns>
-        [HttpGet("Display_Product")] //create GET request in API
-        public async Task<ActionResult<List<DisplayDTO>>> DisplayProductAsync(string? ProductId, string? BookName, int? NumberPages, string? Genre, string? Author, int? InStock, decimal? Cost)
-        {   // send list to the API
-            List<DisplayDTO> result = await this._business.DisplayProductAsync(ProductId, BookName, NumberPages, Genre, Author, InStock, Cost);
-            if (ModelState.IsValid)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return null;
-            }
+        [HttpGet("DisplayProduct")] // API all Get request
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayProductAsync(string? Isbn, string? BookName, int? NumberPages, string? Genre, string? Author, int InStock, decimal? Cost)
+        {
+            
+            // send list to the API
+            List<DisplayDTO> result = await this._business.DisplayProductAsync(Isbn, BookName, NumberPages, Genre, Author, InStock, Cost);
+
+            return Ok(result); // Return status code 200
         }
 
 
