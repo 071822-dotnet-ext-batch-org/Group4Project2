@@ -9,8 +9,9 @@ isAdmin NVARCHAR(3) NOT NULL);
 
 
 CREATE TABLE Products(
-ProductId UNIQUEIDENTIFIER PRIMARY KEY,
+ISBN NVARCHAR(15) PRIMARY KEY,
 BookName NVARCHAR(50) NOT NULL,
+NumberPages INT NOT NULL,
 Genre NVARCHAR(15) NOT NULL,
 Author NVARCHAR(25) NOT NULL,
 inStock INT NOT NULL,
@@ -19,38 +20,38 @@ Cost MONEY NOT NULL);
 
 CREATE TABLE Orders (
 OrderId UNIQUEIDENTIFIER PRIMARY KEY,
-ProductName NVARCHAR(50)NOT NULL,
+BookName NVARCHAR(50)NOT NULL,
 Cost MONEY NOT NULL,
 FirstName NVARCHAR(25) NOT NULL,
 LastName NVARCHAR(25) NOT NULL,
 DeliveryAddress NVARCHAR(75) NOT NULL,
-OrderTracker UNIQUEIDENTIFIER NOT NULL,
-ConfirmId UNIQUEIDENTIFIER  NOT NULL,);
+OrderTracker UNIQUEIDENTIFIER NOT NULL);
 
 CREATE TABLE Login (
-Email NVARCHAR(25) NOT NULL,
+Email NVARCHAR(25) PRIMARY KEY NOT NULL,
 Password NVARCHAR(25) NOT NULL);
 
 CREATE TABLE Cart(
 CartId UNIQUEIDENTIFIER NOT NULL,
-ProductName NVARCHAR(50) NOT NULL,
+BookName NVARCHAR(50) NOT NULL,
 Amount MONEY NOT NULL,
 isUser BIT NOT NULL,
 );
 
 CREATE TABLE Cart(
 CartId UNIQUEIDENTIFIER NOT NULL,
-ProductName NVARCHAR(50) NOT NULL,
+BookName NVARCHAR(50) NOT NULL,
 Amount MONEY NOT NULL,
 isUser BIT NOT NULL,);
 
 INSERT INTO [dbo].[Cart] (CartId, ProductName, Amount, isUser) VALUES('07af6e9b-79e6-4053-844a-3ddcedaea18e', '1984', 19.99, 0);
 
-INSERT INTO [dbo].[Login] (Email, Password) VALUES('JSmith@myEmail.com', '12345');
+
+INSERT INTO Login (Email, Password) VALUES('JSmith@myEmail.com', '12345');
 INSERT INTO Login (Email, Password) VALUES('EWilliams@myEmail.com', '23456');
 INSERT INTO Login (Email, Password) VALUES('BCook@myEmail.com', '34567');
 INSERT INTO Login (Email, Password) VALUES('AWhite@myEmail.com', '45678');
-INSERT INTO Login (Email, Password) VALUES('AWhite@myEmail.com', '56789');
+INSERT INTO Login (Email, Password) VALUES('RDouglass@myEmail.com', '56789');
 INSERT INTO Login (Email, Password) VALUES('SThomas@myEmail.com', '67890');
 INSERT INTO Login (Email, Password) VALUES('JJames@myEmail.com', '78901');
 INSERT INTO Login (Email, Password) VALUES('NGross@myEmail.com', '89012');
@@ -70,7 +71,6 @@ INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, 
 INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES('f2708f61-a505-43c0-9a14-a111c76cc8a1', 'Matt', 'Yipp', '6 9th ave Fairbanks, AK 99775', '1-907-445-4127', 'MYipp@myEmail.com', 'No');
 INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES('1e837b9a-0458-4043-875a-c5f74919b1fa', 'John', 'Johnson', '1 Main st New York, NY 10002', '1-322-123-4567', 'JJohnson@myEmail.com', 'No');
 
-
 INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0547928227', 'The Hobbit', 300, 'Fantasy', 'J. R. R. Tolkien', 5, 19.99);
 INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0316347006', 'How to Train Your Dragon Box Set', 3328, 'Fantasy', 'Cressida Cowell', 2, 39.99);
 INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1783127856', 'The Ultimate Dinosaur Encyclpedia', 160, 'Non-fiction', 'Chris Baker', 9, 14.99);
@@ -80,3 +80,4 @@ INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, i
 INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1913484101', 'Guinness World Records 2022', 256, 'Reference', 'Guiness World Records', 3, 19.99);
 INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-3319188712', 'A Guide to Hubble Space Telescope Objects', 262, 'Education', 'James Chen and Adam Chen', 6, 21.99);
 INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0345535528', 'Game of Thrones box set', 5216, 'Fantasy', 'George R. R. Martin', 11, 36.99);
+
