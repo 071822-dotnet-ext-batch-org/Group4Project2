@@ -11,16 +11,16 @@ namespace ModelsLayer
         /// <summary>
         /// Data transfer object for displaying products
         /// </summary>
-        /// <param name="productId"></param>
+        /// <param name="isbn"></param>
         /// <param name="bookName"></param>
-        /// <param name="numberPages"></param>
         /// <param name="genre"></param>
+        /// <param name="numberPages"></param>
         /// <param name="author"></param>
         /// <param name="inStock"></param>
         /// <param name="cost"></param>
-        public DisplayDTO(string? productId, string? bookName, int? numberPages, string? genre, string? author, int? inStock, decimal? cost)
+        public DisplayDTO(string? isbn, string? bookName, int? numberPages, string? genre, string? author, int? inStock, decimal? cost)
         {
-            ProductId = productId;
+            ISBN = isbn;
             BookName = bookName;
             NumberPages = numberPages;
             Genre = genre;
@@ -29,11 +29,11 @@ namespace ModelsLayer
             Cost = cost;
         }
 
-        // Properties dor constructors
-        public string? ProductId { get; set; }
+        // Properties for constructors
+        public string? ISBN { get; set; }
         public string? BookName { get; set; }
-        public int? NumberPages { get; set; }
         public string? Genre { get; set; }
+        public int? NumberPages { get; set; }
         public string? Author{ get; set; }
         public int? InStock { get; set; }
         public decimal? Cost { get; set; } 

@@ -4,19 +4,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>1efe8b9d-21a6-49c7-a5b5-1e4a7b0781c8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
   </ItemGroup>
 
-  /*<ItemGroup>
-    <None Remove="Microsoft.Data.SqlClient" />
-    <None Remove="System.Data.SqlClient" />
-  </ItemGroup>*/
-  
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
