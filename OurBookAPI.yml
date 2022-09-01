@@ -39,13 +39,6 @@ stages:
       inputs:
         versionSpec: 
         checkLatest: true
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'OurBookstore_SonarcloudConnection'
-        organization: 'larry496'
-        scannerMode: 'MSBuild'
-        projectKey: 'larry496_OurBookStore'
-        projectName: 'OurBookStore'
 
 - stage: build
   dependsOn: prep
@@ -65,6 +58,13 @@ stages:
         projects: '$(solution)'
         arguments: '--configuration $(buildConfiguration)'
         workingDirectory: '$(workingDirectory)'
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'OurBookstore_SonarcloudConnection'
+        organization: 'larry496'
+        scannerMode: 'MSBuild'
+        projectKey: 'larry496_OurBookStore'
+        projectName: 'OurBookStore'
 
 #testing tasks go there
 # - stage: test
