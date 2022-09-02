@@ -18,7 +18,7 @@ namespace ModelsLayer
         /// <param name="author"></param>
         /// <param name="inStock"></param>
         /// <param name="cost"></param>
-        public DisplayDTO(string? isbn, string? bookName, int? numberPages, string? genre, string? author, int? inStock, decimal? cost)
+        public DisplayDTO(string isbn, string bookName, int numberPages, string genre, string author, int inStock, decimal cost)
         {
             ISBN = isbn;
             BookName = bookName;
@@ -30,12 +30,12 @@ namespace ModelsLayer
         }
 
         // Properties for constructors
-        public string? ISBN { get; set; }
-        public string? BookName { get; set; }
-        public string? Genre { get; set; }
-        public int? NumberPages { get; set; }
-        public string? Author{ get; set; }
-        public int? InStock { get; set; }
-        public decimal? Cost { get; set; } 
+        public string ISBN { get; set; }
+        public string BookName { get; set; }
+        public int NumberPages { get; set; }
+        public string Genre { get; set; }
+        public string Author{ get; set; }
+        public int InStock { get; set; }
+        public decimal Cost { get; set; } 
     }
 }

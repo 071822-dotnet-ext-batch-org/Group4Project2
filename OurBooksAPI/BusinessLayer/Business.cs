@@ -16,24 +16,58 @@ namespace BusinessLayer
         }
         */
         /// <summary>
-        /// #3 Display products
+        /// #3 Display all books
         /// </summary>
-        /// <param name="Isbn"></param>
-        /// <param name="BookName"></param>
-        /// <param name="NumberPages"></param>
-        /// <param name="Genre"></param>
-        /// <param name="Author"></param>
-        /// <param name="InStock"></param>
-        /// <param name="Cost"></param>
+        /// <param name="bookName"></param>
         /// <returns></returns>
-        public async Task<List<DisplayDTO>> DisplayProductAsync(string? Isbn, string? BookName, int? NumberPages, string? Genre, string? Author, int InStock, decimal? Cost)
-        {   // create list result from repo layer
-            List<DisplayDTO> result = await this._repo.DisplayProductAsync(Isbn, BookName, NumberPages, Genre, Author, InStock, Cost);
-            return result; // Return 
+        public async Task<List<DisplayDTO>> DisplayAllAsync(string bookName)
+        {
+            List<DisplayDTO> display = await this._repo.DisplayAllAsync(); // Creates display list from repo query
+            return display; 
+        }
+
+        /// <summary>
+        /// #3 display filtered books by genre
+        /// </summary>
+        /// <param name="genre"></param>
+        /// <returns></returns>
+        public async Task<List<DisplayDTO>> DisplayGenreAsync(string genre)
+        {
+            List<DisplayDTO> display = await this._repo.DisplayGenreAsync(genre); // Creates display list from repo query
+            return display;
+        }
+
+        /// <summary>
+        /// #3 Display filtered books by author
+        /// </summary>
+        /// <param name="author"></param>
+        /// <returns></returns>
+        public async Task<List<DisplayDTO>> DisplayAuthorAsync(string author)
+        {
+            List<DisplayDTO> display = await this._repo.DisplayAuthorAsync(author); // Creates display list from repo query
+            return display;
         }
 
 
-    
+        /// <summary>
+        /// #3 Display filteded books by cost
+        /// </summary>
+        /// <param name="cost"></param>
+        /// <returns></returns>
+        public async Task<List<DisplayDTO>> DisplayCostAsync(decimal cost)
+        {
+            if (cost < 30)
+            {
+                List<DisplayDTO> display = await this._repo.DisplayLowCostAsync(cost); // Creates display list from repo query
+                return display;
+            }
+            else
+            {
+                List<DisplayDTO> display = await this._repo.DisplayHighCostAsync(cost); // Creates display list from repo query
+                return display;
+            }
+           
+        }
 
 
         private Credentials? _CurrentCredentials = null;
@@ -49,5 +83,6 @@ namespace BusinessLayer
             return false;
         }//EoLoginAsync
 
+        
     }//EoC
 }//EoN
