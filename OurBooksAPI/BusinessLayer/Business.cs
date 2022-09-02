@@ -16,6 +16,26 @@ namespace BusinessLayer
             this._repositoryLayer = new Repository();
         }
         */
+
+
+        public async Task<NewCustomer> RegisterAccountAsync(CustomerRegisterDto nc)
+        {
+            // check if the user is already in the Db.
+            bool exists = await this._repo.EmailPassWordExists(nc.Email, nc.password);
+            if (exists)
+            {
+                return null;
+            }
+            else
+            {
+                //insert the user into the Db with a new Guid.
+                Guid guid = Guid.NewGuid();
+                NewCustomer nc1 = await this._repo.InsertNewCustomer(guid, nc);
+                return nc1;
+            }
+        }
+
+
         /// <summary>
         /// #3 Display products
         /// </summary>
@@ -33,14 +53,15 @@ namespace BusinessLayer
             return result; // Return 
         }
 
-
-//method to register a new account and input new customer info
+        /*--OLD
+        //method to register a new account and input new customer info
         public async Task<RegisterAccount> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
         {
             RegisterAccount customerInfo = await this._repo.RegisterAccountAsync(userId, firstName, lastName, deliveryAddress, phone, email, isAdmin);
             return customerInfo;
-            
         }
+        */
+            
 
         private Credentials? _CurrentCredentials = null;
 

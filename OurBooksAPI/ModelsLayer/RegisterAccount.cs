@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*Register account class --OLD
+ using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -46,4 +47,4 @@ namespace ModelsLayer
         public string V5 { get; }
         public string V6 { get; }
     }
-}
+}*/

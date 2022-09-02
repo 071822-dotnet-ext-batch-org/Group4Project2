@@ -10,7 +10,6 @@
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
   </ItemGroup>
 
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />

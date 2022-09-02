@@ -13,6 +13,75 @@ namespace RepositoryLayer
     public class Repository
 
     {
+
+        //To query whether the customer account credentials exist
+        public async Task<bool> EmailPassWordExists(string email, string password)
+        {
+            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using (SqlCommand command = new SqlCommand($"SELECT * FROM Login WHERE Email = @email AND Password = @password", connect))
+            {
+                command.Parameters.AddWithValue("@email", email);// add dynamic data like this to protect against SQL Injection.
+                command.Parameters.AddWithValue("@password", password);
+                connect.Open();
+                SqlDataReader? ret = await command.ExecuteReaderAsync();
+                if (ret.Read())
+                {
+                    connect.Close();
+                    return true;
+                }
+                connect.Close();
+                return false;
+            }
+        }
+
+        //To query whether
+        public async Task<NewCustomer> InsertNewCustomer(Guid guid, CustomerRegisterDto nc)
+        {
+            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using SqlCommand command = new SqlCommand($"INSERT INTO Users (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES (@UserId, @FirstName, @LastName, @DeliveryAddress, @Phone, @Email, @isAdmin) ", connect);
+            {
+                command.Parameters.AddWithValue("@UserId", nc.UserId);
+                command.Parameters.AddWithValue("@FirstName", nc.FirstName);//declare scalar variable, add dynamic data like this to avoid sql injection
+                command.Parameters.AddWithValue("@LastName", nc.LastName);
+                command.Parameters.AddWithValue("@DeliveryAddress", nc.DeliveryAddress);
+                command.Parameters.AddWithValue("@Phone", nc.Phone);
+                command.Parameters.AddWithValue("@Email", nc.Email);
+                command.Parameters.AddWithValue("@isAdmin", nc.isAdmin);
+
+                connect.Open();// Opening Connection
+                int ret = await command.ExecuteNonQueryAsync();
+                if (ret == 1)
+                {
+                    connect.Close();
+                    NewCustomer urbi = await this.CustomerById(guid);
+                    return urbi;
+                }
+                connect.Close();
+                return null;
+            }
+        }
+
+        private async Task<NewCustomer> CustomerById(Guid guid)
+        {
+            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using (SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin FROM Users WHERE UserID = @id", connect))
+            {
+                command.Parameters.AddWithValue("@id", guid);// add dynamic data like this to protect against SQL Injection.
+                connect.Open();
+                SqlDataReader? ret = await command.ExecuteReaderAsync();
+                if (ret.Read())
+                {
+                    NewCustomer nc = new NewCustomer(ret.GetGuid(0), ret.GetString(1), ret.GetString(2), ret.GetString(3), ret.GetString(4), ret.GetString(5), ret.GetString(6));
+                    connect.Close();
+                    return nc;
+                }
+                connect.Close();
+                return null;
+            }
+        }
+
+
+        /*//To query and add a new customer to the db---OLD
         public async Task<RegisterAccount> RegisterAccountAsync(Guid userId, string? firstName, string? lastName, string? deliveryAddress, string? phone, string? email, string? isAdmin)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -33,13 +102,13 @@ namespace RepositoryLayer
                     RegisterAccount c_info = new RegisterAccount(ret.GetGuid(0), ret.GetString(1), ret.GetString(2), ret.GetString(3), ret.GetString(4), ret.GetString(5), ret.GetString(6));
                     connect.Close();
                     return c_info;
-
                 }
                 connect.Close();
                 return null;
             }
-        }
+        }*/
 
+        
     
         /// <summary>
         /// #3 Display the products and their information
