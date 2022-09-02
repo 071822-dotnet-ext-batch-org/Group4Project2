@@ -31,6 +31,31 @@ namespace OurBooksAPI.Controllers
         }
         */
 
+        [HttpPost("RegisterAccountAsync")]
+        public async Task<ActionResult<NewCustomer>> RegisterAccountAsync(CustomerRegisterDto nc)
+        {
+            // Call the business layer method to register the new user. 
+            // Make sure the users email/password combo is not already in the system.
+            if (ModelState.IsValid)
+            {
+                NewCustomer nc1 = await this._business.RegisterAccountAsync(nc);
+                if (nc1 != null)
+                {
+                    return BadRequest("This customer already exists. Please use different credentials or login with your username and password.");
+                    //returns 400
+                }
+                else
+                {
+                    return Created("https://localhost:7010/RegisterAccountAsync/TODO", nc1);//returns 201
+                }
+            }
+            else
+            {
+                return BadRequest("The model was not validated");
+            }
+        }
+
+
         /// <summary>
         /// #3 Displays all books and their information
         /// </summary>
