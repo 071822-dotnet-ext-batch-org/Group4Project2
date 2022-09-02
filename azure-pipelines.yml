@@ -26,7 +26,7 @@ stages:
         checkLatest: true
     - task: SonarCloudPrepare@1
       inputs:
-        SonarCloud: 'OurBookstore_SonarcloudConnection'
+        SonarCloud: 'BookStore'
         organization: 'larry496'
         scannerMode: 'MSBuild'
         projectKey: 'larry496_BookStore'
