@@ -11,7 +11,8 @@ using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Http;
 using BusinessLayer;
 using ModelsLayer;
-
+using Microsoft.AspNetCore.Routing.Internal;
+using System.ComponentModel;
 
 namespace OurBooksAPI.Controllers
 {
@@ -31,25 +32,57 @@ namespace OurBooksAPI.Controllers
         */
 
         /// <summary>
-        /// #3 Filter and display products API request
+        /// #3 Displays all books and their information
         /// </summary>
-        /// <param name="Isbn"></param>
-        /// <param name="BookName"></param>
-        /// <param name="NumberPages"></param>
-        /// <param name="Genre"></param>
-        /// <param name="Author"></param>
-        /// <param name="InStock"></param>
-        /// <param name="Cost"></param>
+        /// <param name="bookName"></param>
         /// <returns></returns>
-        [HttpGet("DisplayProduct")] // API all Get request
-        public async Task<ActionResult<List<DisplayDTO>>> DisplayProductAsync(string? Isbn, string? BookName, int? NumberPages, string? Genre, string? Author, int InStock, decimal? Cost)
+        [HttpGet("DisplayAll")] // API Get request
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayAllAsync(string bookName)
         {
-            
-            // send list to the API
-            List<DisplayDTO> result = await this._business.DisplayProductAsync(Isbn, BookName, NumberPages, Genre, Author, InStock, Cost);
+            List<DisplayDTO> result = await this._business.DisplayAllAsync(bookName); //Creates a list from the business layer to send to API
 
-            return Ok(result); // Return status code 200
+            return Ok(result); // Returns status code 200
         }
+
+        /// <summary>
+        /// #3 Display filtered books by genre
+        /// </summary>
+        /// <param name="genre"></param>
+        /// <returns></returns>
+        [HttpGet("DisplayGenre")] // API Get request
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayGenreAsync(string genre)
+        {
+            List<DisplayDTO> result = await this._business.DisplayGenreAsync(genre); //Creates a list from the business layer to send to API
+
+            return Ok(result); // Returns status code 200
+        }
+
+        /// <summary>
+        /// #3 Display filtered books by author
+        /// </summary>
+        /// <param name="Author"></param>
+        /// <returns></returns>
+        [HttpGet("DisplayAuthor")] // API Get request
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayAuthorAsync(string Author)
+        {
+            List<DisplayDTO> result = await this._business.DisplayAuthorAsync(Author); //Creates a list from the business layer to send to API
+
+            return Ok(result); // Returns status code 200
+        }
+
+        /// <summary>
+        /// #3 Display filtered books by cost
+        /// </summary>
+        /// <param name="cost"></param>
+        /// <returns></returns>
+        [HttpGet("DisplayCost")] // API Get request
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayCostAsync(decimal cost)
+        {
+            List<DisplayDTO> result = await this._business.DisplayCostAsync(cost); //Creates a list from the business layer to send to API
+
+            return Ok(result); // Returns status code 200
+        }
+
 
 
         /*private Business _business = new Business();
