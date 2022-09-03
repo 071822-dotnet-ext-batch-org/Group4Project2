@@ -25,6 +25,7 @@ namespace OurBooksAPI.Controllers
         private Business _business = new Business(); // Creating a new business connection object
         
 
+
         /*
         private readonly Business _businessLayer; //Private field to be used in constructor for Controller().
         public Controller() //Constructor to connect to BusinessLayer.
@@ -56,6 +57,7 @@ namespace OurBooksAPI.Controllers
             }
 
         */
+
 
         [HttpPost("RegisterAccountAsync")]
         public async Task<ActionResult<NewCustomer>> RegisterAccountAsync(CustomerRegisterDto nc)
@@ -97,6 +99,19 @@ namespace OurBooksAPI.Controllers
         }
 
         /// <summary>
+        /// #3 Display filtered books by name
+        /// </summary>
+        /// <param name="bookName"></param>
+        /// <returns></returns>
+        [HttpGet("DisplayName")] // API Get request
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayNameAsync(string bookName)
+        {
+            List<DisplayDTO> result = await this._business.DisplayNameAsync(bookName); //Creates a list from the business layer to send to API
+
+            return Ok(result); // Returns status code 200
+        }
+
+        /// <summary>
         /// #3 Display filtered books by genre
         /// </summary>
         /// <param name="genre"></param>
@@ -123,7 +138,7 @@ namespace OurBooksAPI.Controllers
         }
 
         /// <summary>
-        /// #3 Display filtered books by cost
+        /// #3 Display filtered books by cost < 30 and cost > 30 
         /// </summary>
         /// <param name="cost"></param>
         /// <returns></returns>
@@ -133,6 +148,18 @@ namespace OurBooksAPI.Controllers
             List<DisplayDTO> result = await this._business.DisplayCostAsync(cost); //Creates a list from the business layer to send to API
 
             return Ok(result); // Returns status code 200
+        }
+
+        /// <summary>
+        /// #5 Checkout payment
+        /// </summary>
+        /// <param name="checkout"></param>
+        /// <returns></returns>
+        [HttpPost("Order")] // Http post request to API
+        public async Task<ActionResult<List<CheckoutDTO>>> CheckoutAsync(CheckoutDTO checkout)
+        {
+            List<CheckoutDTO> check = await this._business.CheckoutAsync(checkout.CartId, checkout.BookName, checkout.Money, checkout.IsUser);
+            return Ok(check);
         }
 
 
