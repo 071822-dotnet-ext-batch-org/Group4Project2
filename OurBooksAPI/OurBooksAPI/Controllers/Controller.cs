@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Linq.Expressions;
+using System.Net;
 using System.Reflection;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,66 @@ namespace OurBooksAPI.Controllers
     {
 
         private Business _business = new Business(); // Creating a new business connection object
+        
+
+
+        /*
+        private readonly Business _businessLayer; //Private field to be used in constructor for Controller().
+        public Controller() //Constructor to connect to BusinessLayer.
+        {
+            this._businessLayer = new Business();
+        }
+
+        [HttpPost("RegisterAccountAsync")]
+        public async Task<ActionResult<NewCustomer>> RegisterAccountAsync(CustomerRegisterDto nc)
+        {
+            // Call the business layer method to register the new user. 
+            // Make sure the users email/password combo is not already in the system.
+            if (ModelState.IsValid)
+            {
+                NewCustomer nc1 = await this._business.RegisterAccountAsync(nc);
+                if (nc1 != null)
+                {
+                    return BadRequest("This customer already exists. Please use different credentials or login with your username and password.");
+                    //returns 400
+                }
+                else
+                {
+                    return Created("https://localhost:7010/RegisterAccountAsync/TODO", nc1);//returns 201
+                }
+            }
+            else
+            {
+                return BadRequest("The model was not validated");
+            }
+
+        */
+
+
+        [HttpPost("RegisterAccountAsync")]
+        public async Task<ActionResult<NewCustomer>> RegisterAccountAsync(CustomerRegisterDto nc)
+        {
+            // Call the business layer method to register the new user. 
+            // Make sure the users email/password combo is not already in the system.
+            if (ModelState.IsValid)
+            {
+                NewCustomer nc1 = await this._business.RegisterAccountAsync(nc);
+                if (nc1 != null)
+                {
+                    return BadRequest("This customer already exists. Please use different credentials or login with your username and password.");
+                    //returns 400
+                }
+                else
+                {
+                    return Created("https://localhost:7010/RegisterAccountAsync/TODO", nc1);//returns 201
+                }
+            }
+            else
+            {
+                return BadRequest("The model was not validated");
+            }
+
+        }
 
 
         /// <summary>
@@ -107,7 +168,7 @@ namespace OurBooksAPI.Controllers
        //private readonly Business _business;*/
 
         [HttpPost("Login")]//Check the credentials
-        public async Task <ActionResult> LoginAsync(Credentials Login)//Memeber data transfer object to carry login credentials data between processes.
+        public async Task <ActionResult> LoginAsync(Credentials Login)//Member data transfer object to carry login credentials data between processes.
         {
          if (ModelState.IsValid)//Model Validation: was it possible to bind incoming values to MemberDTO?
             {
@@ -118,6 +179,29 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
+
+
+        [HttpGet("Profile")]//Retrieve the member profile
+        public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
+        {
+            if (ModelState.IsValid)
+            {
+                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email, Profile.Password);
+                return Ok(result);
+            }
+            return NotFound("Something went wrong. Did you input the correct username and password?");
+        }//EoProfileAsync
+
+
+        [HttpGet("ViewOrderAsync")]//view previous orders by guid OrderTracker id
+        public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
+        {
+            List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);
+            return Ok(orderList);
+        }
+       
+
+
 
     }//EoC
 }//EoN
