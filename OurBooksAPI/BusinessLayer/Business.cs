@@ -27,6 +27,17 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// #3 Display filtered books by name
+        /// </summary>
+        /// <param name="bookName"></param>
+        /// <returns></returns>
+        public async Task<List<DisplayDTO>> DisplayNameAsync(string bookName)
+        {
+            List<DisplayDTO> display = await this._repo.DisplayNameAsync(bookName); // Creates display list from repo query
+            return display;
+        }
+
+        /// <summary>
         /// #3 display filtered books by genre
         /// </summary>
         /// <param name="genre"></param>
@@ -69,6 +80,18 @@ namespace BusinessLayer
            
         }
 
+        /// <summary>
+        /// #5 Checkout payment
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
+        {
+            List<CheckoutDTO> check = await this._repo.CheckoutAsync(cartId); // Creates display list from repo query
+            return check;
+        }
+
 
         private Credentials? _CurrentCredentials = null;
 
@@ -83,6 +106,6 @@ namespace BusinessLayer
             return false;
         }//EoLoginAsync
 
-        
+      
     }//EoC
 }//EoN

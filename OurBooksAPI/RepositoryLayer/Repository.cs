@@ -38,6 +38,33 @@ namespace RepositoryLayer
         }
 
         /// <summary>
+        /// #3 Display filtered books by name
+        /// </summary>
+        /// <param name="bookName"></param>
+        /// <returns></returns>
+        public async Task<List<DisplayDTO>> DisplayNameAsync(string bookName)
+        {
+            // Connection to Azure server
+            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using (SqlCommand command = new SqlCommand($"SELECT * FROM Products WHERE BookName = @name", connect)) // SQL query in Azure DB
+            {   // Parameters to stop sql injection
+                command.Parameters.AddWithValue("@name", bookName);
+
+                connect.Open(); // Open sql connection
+                SqlDataReader? ret = await command.ExecuteReaderAsync(); // Reads command
+                List<DisplayDTO> rtnList = new List<DisplayDTO>(); // Creates empty DisplayDTO list
+
+                while (ret.Read()) // Loops through ret command
+                {   // Gets properties for DisplayDTO
+                    DisplayDTO display = new DisplayDTO(ret.GetString(0), ret.GetString(1), ret.GetInt32(2), ret.GetString(3), ret.GetString(4), ret.GetInt32(5), ret.GetDecimal(6));
+                    rtnList.Add(display); // Adds display to empty rtnList
+                }
+                connect.Close(); // Closes connection
+                return rtnList;
+            }
+        }
+
+        /// <summary>
         /// #3 Display Books by genre 
         /// </summary>
         /// <param name="genre"></param>
@@ -137,7 +164,35 @@ namespace RepositoryLayer
             }
         }
 
+        /// <summary>
+        /// #5 Checkout payment
+        /// </summary>
+        /// <param name="checkout"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
+        {
+            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using (SqlCommand command = new SqlCommand($"SELECT * FROM Cart WHERE CartId = @cart", connect))
+            {
+                command.Parameters.AddWithValue("@cart", cartId);
 
+                connect.Open();
+
+                SqlDataReader? ret = await command.ExecuteReaderAsync();
+
+                if (ret.Read())
+                {
+                    List<CheckoutDTO> check = new CheckoutDTO(ret.GetGuid(0), ret.GetString(1), ret.GetDecimal(2), ret.GetBoolean(3));
+                    return check;
+                }
+                else
+                {
+                    connect.Close();
+                    return null;
+                }
+            }
+        }
 
         public object c { get; set;}
 
@@ -166,6 +221,8 @@ namespace RepositoryLayer
             }
         }//EoGetCredentialsAsync
 
+  
 
+     
     }//EoC
 }//EoN
