@@ -32,8 +32,6 @@ namespace OurBooksAPI.Controllers
             this._businessLayer = new Business();
         }
 
-        /*
-
         [HttpPost("RegisterAccountAsync")]
         public async Task<ActionResult<NewCustomer>> RegisterAccountAsync(CustomerRegisterDto nc)
         {
