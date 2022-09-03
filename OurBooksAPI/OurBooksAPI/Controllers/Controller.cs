@@ -22,6 +22,7 @@ namespace OurBooksAPI.Controllers
     {
 
         private Business _business = new Business(); // Creating a new business connection object
+        
 
         /*
         private readonly Business _businessLayer; //Private field to be used in constructor for Controller().
@@ -125,6 +126,16 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
+
+
+        [HttpGet("ViewOrderAsync")]//view previous orders by guid OrderTracker id
+        public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
+        {
+            List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);
+            return Ok(orderList);
+        }
+       
+
 
     }//EoC
 }//EoN
