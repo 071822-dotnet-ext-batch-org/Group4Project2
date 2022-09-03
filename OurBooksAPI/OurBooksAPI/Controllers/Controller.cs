@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Linq.Expressions;
+using System.Net;
 using System.Reflection;
 using System;
 using System.Collections.Generic;
@@ -114,7 +115,7 @@ namespace OurBooksAPI.Controllers
        //private readonly Business _business;*/
 
         [HttpPost("Login")]//Check the credentials
-        public async Task <ActionResult> LoginAsync(Credentials Login)//Memeber data transfer object to carry login credentials data between processes.
+        public async Task <ActionResult> LoginAsync(Credentials Login)//Member data transfer object to carry login credentials data between processes.
         {
          if (ModelState.IsValid)//Model Validation: was it possible to bind incoming values to MemberDTO?
             {
@@ -125,6 +126,17 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
+
+        [HttpGet("Profile")]//Retrieve the member profile
+        public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
+        {
+            if (ModelState.IsValid)
+            {
+                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email, Profile.Password);
+                return Ok(result);
+            }
+            return NotFound("Something went wrong. Did you input the correct username and password?");
+        }//EoProfileAsync
 
     }//EoC
 }//EoN

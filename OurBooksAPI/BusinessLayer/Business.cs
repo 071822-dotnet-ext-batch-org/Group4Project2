@@ -84,7 +84,6 @@ namespace BusinessLayer
                 List<DisplayDTO> display = await this._repo.DisplayHighCostAsync(cost); // Creates display list from repo query
                 return display;
             }
-           
         }
 
 
@@ -101,6 +100,11 @@ namespace BusinessLayer
             return false;
         }//EoLoginAsync
 
-        
+        public async Task<List<ProfileDTO>> DisplayProfileAsync(string email, string password)
+        {
+            List<ProfileDTO> profile = await this._repo.DisplayCurrentProfileAsync(email, password);//Returns profile from repo
+            return profile;
+        }//EoDisplayProfileAsync
+
     }//EoC
 }//EoN
