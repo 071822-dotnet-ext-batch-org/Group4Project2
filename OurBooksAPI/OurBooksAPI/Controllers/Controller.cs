@@ -23,6 +23,7 @@ namespace OurBooksAPI.Controllers
     {
 
         private Business _business = new Business(); // Creating a new business connection object
+        
 
         /*
         private readonly Business _businessLayer; //Private field to be used in constructor for Controller().
@@ -30,6 +31,32 @@ namespace OurBooksAPI.Controllers
         {
             this._businessLayer = new Business();
         }
+
+        /*
+
+        [HttpPost("RegisterAccountAsync")]
+        public async Task<ActionResult<NewCustomer>> RegisterAccountAsync(CustomerRegisterDto nc)
+        {
+            // Call the business layer method to register the new user. 
+            // Make sure the users email/password combo is not already in the system.
+            if (ModelState.IsValid)
+            {
+                NewCustomer nc1 = await this._business.RegisterAccountAsync(nc);
+                if (nc1 != null)
+                {
+                    return BadRequest("This customer already exists. Please use different credentials or login with your username and password.");
+                    //returns 400
+                }
+                else
+                {
+                    return Created("https://localhost:7010/RegisterAccountAsync/TODO", nc1);//returns 201
+                }
+            }
+            else
+            {
+                return BadRequest("The model was not validated");
+            }
+
         */
 
         [HttpPost("RegisterAccountAsync")]
@@ -54,6 +81,7 @@ namespace OurBooksAPI.Controllers
             {
                 return BadRequest("The model was not validated");
             }
+
         }
 
 
@@ -127,6 +155,7 @@ namespace OurBooksAPI.Controllers
             }
         }//EoLoginAsync
 
+
         [HttpGet("Profile")]//Retrieve the member profile
         public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
         {
@@ -137,6 +166,17 @@ namespace OurBooksAPI.Controllers
             }
             return NotFound("Something went wrong. Did you input the correct username and password?");
         }//EoProfileAsync
+
+
+        [HttpGet("ViewOrderAsync")]//view previous orders by guid OrderTracker id
+        public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
+        {
+            List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);
+            return Ok(orderList);
+        }
+       
+
+
 
     }//EoC
 }//EoN

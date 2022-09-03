@@ -100,11 +100,19 @@ namespace BusinessLayer
             return false;
         }//EoLoginAsync
 
+
         public async Task<List<ProfileDTO>> DisplayProfileAsync(string email, string password)
         {
             List<ProfileDTO> profile = await this._repo.DisplayCurrentProfileAsync(email, password);//Returns profile from repo
             return profile;
         }//EoDisplayProfileAsync
+
+
+        public async Task<List<ViewOrder>> ViewOrderAsync(Guid OrderTracker)
+        {
+            List<ViewOrder> order = await this._repo.ViewOrderAsync(OrderTracker); // Generates an order list from repo query
+            return order;
+        }
 
     }//EoC
 }//EoN
