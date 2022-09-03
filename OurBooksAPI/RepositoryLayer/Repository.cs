@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 using System.Net.NetworkInformation;
+using System.Data;
 
 namespace RepositoryLayer
 {
@@ -215,7 +216,7 @@ namespace RepositoryLayer
         public async Task <Credentials> GetCredentialsAsync(string email, string password)
         {
             SqlConnection conn = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using SqlCommand command = new SqlCommand($"SELECT * FROM  Login WHERE Email = @email AND Password = @password", conn);
+            using SqlCommand command = new SqlCommand($"SELECT * FROM Login WHERE Email = @email AND Password = @password", conn);
             command.Parameters.AddWithValue("@email", email);
             command.Parameters.AddWithValue("@password", password);
             conn.Open();
@@ -233,8 +234,49 @@ namespace RepositoryLayer
                 conn.Close();
                 return null;
             }
+
         }//EoGetCredentialsAsync
 
+         public async Task<List<ProfileDTO>> DisplayCurrentProfileAsync(string email, string password)
+         {
+            SqlConnection conn = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM Users AND Login WHERE Email = @email AND Password = @password", conn);
+            command.Parameters.AddWithValue("@email", email);
+            command.Parameters.AddWithValue("@password", password);
+            conn.Open();
+            SqlDataReader? ret = await command.ExecuteReaderAsync();
+            List<ProfileDTO> rtnList = new List<ProfileDTO>();
+            while (ret.Read())
+            {
+                ProfileDTO profile = new ProfileDTO(ret.GetString(0), ret.GetString(1), ret.GetString(2), ret.GetString(3), ret.GetString(4));
+                rtnList.Add(profile);
+            }
+            conn.Close();
+            return rtnList;
+         }//EoDisplayProfileAsync
+
+
+  
+
+        //To query the orders table to return order information using the Guid orderTracker
+        public async Task<List<ViewOrder>> ViewOrderAsync(Guid OrderTracker)
+        {
+            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            using (SqlCommand command = new SqlCommand($"SELECT * FROM Orders WHERE OrderTracker = @OrderTracker", connect))
+            {
+                command.Parameters.AddWithValue("@OrderTracker", OrderTracker);// add dynamic data like this to protect against SQL Injection.
+                connect.Open();
+                SqlDataReader? ret = await command.ExecuteReaderAsync();
+                List<ViewOrder> rList = new List<ViewOrder>();
+                while (ret.Read())
+                {
+                    ViewOrder r = new ViewOrder(ret.GetGuid(0), ret.GetString(1), ret.GetDecimal(2), ret.GetString(3), ret.GetString(4), ret.GetString(5), ret.GetGuid(6));
+                    rList.Add(r);
+                }
+                connect.Close();
+                return rList;
+            }
+        }
 
     }//EoC
 }//EoN
