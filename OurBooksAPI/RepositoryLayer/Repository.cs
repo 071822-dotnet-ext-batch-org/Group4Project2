@@ -36,7 +36,7 @@ namespace RepositoryLayer
         }
 
         //To insert the unique new customer into the database 
-        public async Task<NewCustomer> InsertNewCustomer(Guid guid, CustomerRegisterDto nc)
+        public async Task<NewCustomer> InsertNewCustomer(Guid id, CustomerRegisterDto nc)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using SqlCommand command = new SqlCommand($"INSERT INTO Users (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES (@UserId, @FirstName, @LastName, @DeliveryAddress, @Phone, @Email, @isAdmin) ", connect);
@@ -54,7 +54,7 @@ namespace RepositoryLayer
                 if (ret == 1)
                 {
                     connect.Close();
-                    NewCustomer urbi = await this.CustomerById(guid);
+                    NewCustomer urbi = await this.CustomerById(id);
                     return urbi;
                 }
                 connect.Close();
@@ -63,17 +63,17 @@ namespace RepositoryLayer
         }
 
         //To query only new customers based on the unique guid id 
-        private async Task<NewCustomer> CustomerById(Guid guid)
+        private async Task<NewCustomer> CustomerById(Guid id)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin FROM Users WHERE UserID = @id", connect))
             {
-                command.Parameters.AddWithValue("@id", guid);// add dynamic data like this to protect against SQL Injection.
+                command.Parameters.AddWithValue("@id", id);// add dynamic data like this to protect against SQL Injection.
                 connect.Open();
                 SqlDataReader? ret = await command.ExecuteReaderAsync();
                 if (ret.Read())
                 {
-                    NewCustomer nc = new NewCustomer(ret.GetGuid(0), ret.GetString(1), ret.GetString(2), ret.GetString(3), ret.GetString(4), ret.GetString(5), ret.GetString(6));
+                    NewCustomer nc = new NewCustomer(ret.GetString(0), ret.GetString(1), ret.GetString(2), ret.GetString(3), ret.GetString(4), ret.GetString(5));
                     connect.Close();
                     return nc;
                 }
