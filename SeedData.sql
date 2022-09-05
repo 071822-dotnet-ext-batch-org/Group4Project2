@@ -28,7 +28,7 @@ DeliveryAddress NVARCHAR(75) NOT NULL,
 OrderTracker UNIQUEIDENTIFIER NOT NULL);
 
 CREATE TABLE Login (
-Email NVARCHAR(25) PRIMARY KEY NOT NULL,
+Email NVARCHAR(25) PRIMARY KEY,
 Password NVARCHAR(25) NOT NULL);
 
 CREATE TABLE Cart(
@@ -38,13 +38,7 @@ Amount MONEY NOT NULL,
 isUser BIT NOT NULL,
 );
 
-CREATE TABLE Cart(
-CartId UNIQUEIDENTIFIER NOT NULL,
-BookName NVARCHAR(50) NOT NULL,
-Amount MONEY NOT NULL,
-isUser BIT NOT NULL,);
-
-INSERT INTO [dbo].[Cart] (CartId, ProductName, Amount, isUser) VALUES('07af6e9b-79e6-4053-844a-3ddcedaea18e', '1984', 19.99, 0);
+INSERT INTO [dbo].[Cart] (CartId, BookName, Amount, isUser) VALUES('07af6e9b-79e6-4053-844a-3ddcedaea18e', '1984', 19.99, 0);
 
 
 INSERT INTO Login (Email, Password) VALUES('JSmith@myEmail.com', '12345');
@@ -58,7 +52,7 @@ INSERT INTO Login (Email, Password) VALUES('NGross@myEmail.com', '89012');
 INSERT INTO Login (Email, Password) VALUES('MYipp@myEmail.com', '90123');
 INSERT INTO Login (Email, Password) VALUES('JJohnson@myEmail.com', '01234');
 
-INSERT INTO [dbo].[Orders] (OrderId, ProductName, Cost, DeliveryAddress, FirstName, LastName, OrderTracker, ConfirmId) VALUES('0391a76a-b538-40e6-9b90-e34f4881a95a', 'How to Train Your Dragon', 14.99, '123 4th ave New York, NY 10002', 'Jane', 'Smith', '571fe2f0-924f-4853-ad02-e8263d99dffd', '04b7a8f5-655f-4477-a9bf-6792414d45ae');
+INSERT INTO [dbo].[Orders] (OrderId, BookName, Cost, DeliveryAddress, FirstName, LastName, OrderTracker) VALUES('0391a76a-b538-40e6-9b90-e34f4881a95a', 'How to Train Your Dragon', 14.99, '123 4th ave New York, NY 10002', 'Jane', 'Smith', '571fe2f0-924f-4853-ad02-e8263d99dffd');
 
 INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES('bfb9bec7-89ce-4ede-aa39-176890422c76', 'Erica', 'Williams', '4 Right ln Houston, TX 177493', '1-214-778-4227', 'EWilliams@myEmail.com', 'No');
 INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES('763b4a10-ce81-48f9-8cce-2734fcc15fb2', 'Beth', 'Cook', '3 1st ave Los Angelos, CA 90002', '1-225-884-9876', 'BCook@myEmail.com', 'No');
@@ -71,13 +65,13 @@ INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, 
 INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES('f2708f61-a505-43c0-9a14-a111c76cc8a1', 'Matt', 'Yipp', '6 9th ave Fairbanks, AK 99775', '1-907-445-4127', 'MYipp@myEmail.com', 'No');
 INSERT INTO [dbo].[Users] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES('1e837b9a-0458-4043-875a-c5f74919b1fa', 'John', 'Johnson', '1 Main st New York, NY 10002', '1-322-123-4567', 'JJohnson@myEmail.com', 'No');
 
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0547928227', 'The Hobbit', 300, 'Fantasy', 'J. R. R. Tolkien', 5, 19.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0316347006', 'How to Train Your Dragon Box Set', 3328, 'Fantasy', 'Cressida Cowell', 2, 39.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1783127856', 'The Ultimate Dinosaur Encyclpedia', 160, 'Non-fiction', 'Chris Baker', 9, 14.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0914098911', 'Calcus, 4th Edition', 680, 'Education', 'Michael Spivak', 99, 99.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0984782857', 'Cracking the Coding Interview', 687, 'Business', 'Gayle Laakmann McDowell', 17, 33.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1571989260', 'The 2023 Frarmers Almanac', 288, 'Reference', 'Old Farmers Almanac', 4, 4.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1913484101', 'Guinness World Records 2022', 256, 'Reference', 'Guiness World Records', 3, 19.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-3319188712', 'A Guide to Hubble Space Telescope Objects', 262, 'Education', 'James Chen and Adam Chen', 6, 21.99);
-INSERT INTO [dbo].[Products] (ProductId, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0345535528', 'Game of Thrones box set', 5216, 'Fantasy', 'George R. R. Martin', 11, 36.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0547928227', 'The Hobbit', 300, 'Fantasy', 'J. R. R. Tolkien', 5, 19.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0316347006', 'How to Train Your Dragon Box Set', 3328, 'Fantasy', 'Cressida Cowell', 2, 39.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1783127856', 'The Ultimate Dinosaur Encyclpedia', 160, 'Non-fiction', 'Chris Baker', 9, 14.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0914098911', 'Calcus, 4th Edition', 680, 'Education', 'Michael Spivak', 99, 99.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0984782857', 'Cracking the Coding Interview', 687, 'Business', 'Gayle Laakmann McDowell', 17, 33.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1571989260', 'The 2023 Frarmers Almanac', 288, 'Reference', 'Old Farmers Almanac', 0, 4.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-1913484101', 'Guinness World Records 2022', 256, 'Reference', 'Guiness World Records', 3, 19.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-3319188712', 'A Guide to Hubble Space Telescope Objects', 262, 'Education', 'James Chen and Adam Chen', 6, 21.99);
+INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0345535528', 'Game of Thrones box set', 5216, 'Fantasy', 'George R. R. Martin', 11, 36.99);
 
