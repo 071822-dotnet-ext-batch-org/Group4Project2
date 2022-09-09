@@ -125,17 +125,17 @@ namespace OurBooksAPI.Controllers
             return Ok(result); // Returns status code 200
         }
 
-        /// <summary>
-        /// #5 Checkout payment
-        /// </summary>
-        /// <param name="checkout"></param>
-        /// <returns></returns>
-        [HttpPost("Order")] // Http post request to API
-        public async Task<ActionResult<List<CheckoutDTO>>> CheckoutAsync(CheckoutDTO checkout)
-        {
-            List<CheckoutDTO> check = await this._business.CheckoutAsync(checkout.CartId, checkout.BookName, checkout.Money, checkout.IsUser);
-            return Ok(check);
-        }
+        // /// <summary>
+        // /// #5 Checkout payment
+        // /// </summary>
+        // /// <param name="checkout"></param>
+        // /// <returns></returns>
+        // [HttpPost("Order")] // Http post request to API
+        // public async Task<ActionResult<List<CheckoutDTO>>> CheckoutAsync(CheckoutDTO checkout)
+        // {
+        //     List<CheckoutDTO> check = await this._business.CheckoutAsync(checkout.CartId, checkout.BookName, checkout.Money, checkout.IsUser);
+        //     return Ok(check);
+        // }
 
 
         [HttpPost("Login")]//Check the credentials

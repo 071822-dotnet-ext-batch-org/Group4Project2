@@ -240,29 +240,29 @@ namespace RepositoryLayer
         /// <param name="checkout"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
-        {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT * FROM Cart WHERE CartId = @cart", connect))
-            {
-                command.Parameters.AddWithValue("@cart", cartId);
+        // public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
+        // {
+        //     SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        //     using (SqlCommand command = new SqlCommand($"SELECT * FROM Cart WHERE CartId = @cart", connect))
+        //     {
+        //         command.Parameters.AddWithValue("@cart", cartId);
 
-                connect.Open();
+        //         connect.Open();
 
-                SqlDataReader? ret = await command.ExecuteReaderAsync();
+        //         SqlDataReader? ret = await command.ExecuteReaderAsync();
 
-                if (ret.Read())
-                {
-                    List<CheckoutDTO> check = new CheckoutDTO(ret.GetGuid(0), ret.GetString(1), ret.GetDecimal(2), ret.GetBoolean(3));
-                    return check;
-                }
-                else
-                {
-                    connect.Close();
-                    return null;
-                }
-            }
-        }
+        //         if (ret.Read())
+        //         {
+        //             List<CheckoutDTO> check = new CheckoutDTO(ret.GetGuid(0), ret.GetString(1), ret.GetDecimal(2), ret.GetBoolean(3));
+        //             return check;
+        //         }
+        //         else
+        //         {
+        //             connect.Close();
+        //             return null;
+        //         }
+        //     }
+        // }
 
         public object c { get; set;}
 

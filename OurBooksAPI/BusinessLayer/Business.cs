@@ -97,17 +97,17 @@ namespace BusinessLayer
             }
         }
 
-        /// <summary>
-        /// #5 Checkout payment
-        /// </summary>
-        /// <param name="cartId"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
-        {
-            List<CheckoutDTO> check = await this._repo.CheckoutAsync(cartId); // Creates display list from repo query
-            return check;
-        }
+        // /// <summary>
+        // /// #5 Checkout payment
+        // /// </summary>
+        // /// <param name="cartId"></param>
+        // /// <returns></returns>
+        // /// <exception cref="NotImplementedException"></exception>
+        // public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
+        // {
+        //     List<CheckoutDTO> check = await this._repo.CheckoutAsync(cartId); // Creates display list from repo query
+        //     return check;
+        // }
 
 
         private Credentials? _CurrentCredentials = null;
