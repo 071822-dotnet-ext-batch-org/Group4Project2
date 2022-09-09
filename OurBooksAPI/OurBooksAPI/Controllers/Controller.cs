@@ -157,10 +157,10 @@ namespace OurBooksAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email, Profile.Password);
+                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email);
                 return Ok(result);
             }
-            return NotFound("Something went wrong. Did you input the correct username and password?");
+            return NotFound("Something went wrong. Did you input the correct username?");
         }//EoProfileAsync
 
 
