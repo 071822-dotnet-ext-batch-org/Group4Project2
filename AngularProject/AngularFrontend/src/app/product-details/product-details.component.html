@@ -1,0 +1,15 @@
+<h2>Product Details</h2>
+<div *ngIf="product">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.author }}</p>
+</div>
+
+<button type="button" (click)="addToCart(product)">
+    Add to Cart
+</button>
+
+<button type="button" [routerLink]="'/'">
+    Back to List
+</button>
+
+   
