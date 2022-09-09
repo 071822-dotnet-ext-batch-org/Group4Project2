@@ -18,7 +18,7 @@ namespace RepositoryLayer
         //To query whether the customer account credentials exist
         public async Task<bool> EmailPassWordExists(string email, string password)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Login WHERE Email = @email AND Password = @password", connect))
             {
                 command.Parameters.AddWithValue("@email", email);// add dynamic data like this to protect against SQL Injection.
@@ -38,7 +38,7 @@ namespace RepositoryLayer
         //To insert the unique new customer into the database 
         public async Task<NewCustomer> InsertNewCustomer(Guid id, CustomerRegisterDto nc)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using SqlCommand command = new SqlCommand($"INSERT INTO Users (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin) VALUES (@UserId, @FirstName, @LastName, @DeliveryAddress, @Phone, @Email, @isAdmin) ", connect);
             {
                 command.Parameters.AddWithValue("@UserId", nc.UserId);
@@ -65,7 +65,7 @@ namespace RepositoryLayer
         //To query only new customers based on the unique guid id 
         private async Task<NewCustomer> CustomerById(Guid id)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email, isAdmin FROM Users WHERE UserID = @id", connect))
             {
                 command.Parameters.AddWithValue("@id", id);// add dynamic data like this to protect against SQL Injection.
@@ -89,7 +89,7 @@ namespace RepositoryLayer
         /// <returns></returns>
         public async Task<List<DisplayDTO>> DisplayAllAsync()
         {   // Connection to Azure server
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Products", connect)) // SQL query in Azure DB
             {
                 connect.Open(); // Open sql connection
@@ -115,7 +115,7 @@ namespace RepositoryLayer
         public async Task<List<DisplayDTO>> DisplayNameAsync(string bookName)
         {
             // Connection to Azure server
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Products WHERE BookName = @name", connect)) // SQL query in Azure DB
             {   // Parameters to stop sql injection
                 command.Parameters.AddWithValue("@name", bookName);
@@ -141,7 +141,7 @@ namespace RepositoryLayer
         /// <returns></returns>
         public async Task<List<DisplayDTO>> DisplayGenreAsync(string genre)
         {   // Connection to Azure server
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Products WHERE Genre = @genre", connect)) // SQL query in Azure DB
             {
                 command.Parameters.AddWithValue("@genre", genre); // Parameters to stop SQL injection
@@ -167,7 +167,7 @@ namespace RepositoryLayer
         /// <returns></returns>
         public async Task<List<DisplayDTO>> DisplayAuthorAsync(string author)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Products WHERE Author = @author", connect)) // SQL query in Azure DB
             {
                 command.Parameters.AddWithValue("@author", author); // Parameters to stop SQL injection
@@ -193,7 +193,7 @@ namespace RepositoryLayer
         /// <returns></returns>
         public async Task<List<DisplayDTO>> DisplayHighCostAsync(decimal cost)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Products WHERE Cost >= 30;", connect)) // SQL query in Azure DB
             {
                 connect.Open();// Open sql connection
@@ -217,7 +217,7 @@ namespace RepositoryLayer
         /// <returns></returns>
         public async Task<List<DisplayDTO>> DisplayLowCostAsync(decimal cost)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Products WHERE Cost < 30;", connect)) // SQL query in Azure DB
             {
                 connect.Open();// Open sql connection
@@ -242,7 +242,7 @@ namespace RepositoryLayer
         /// <exception cref="NotImplementedException"></exception>
         // public async Task<List<CheckoutDTO>> CheckoutAsync(cartId)
         // {
-        //     SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        //     SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         //     using (SqlCommand command = new SqlCommand($"SELECT * FROM Cart WHERE CartId = @cart", connect))
         //     {
         //         command.Parameters.AddWithValue("@cart", cartId);
@@ -266,11 +266,11 @@ namespace RepositoryLayer
 
         public object c { get; set;}
 
-        private static readonly SqlConnection conn = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        private static readonly SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         
         public async Task <Credentials> GetCredentialsAsync(string email, string password)
         {
-            SqlConnection conn = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using SqlCommand command = new SqlCommand($"SELECT * FROM Login WHERE Email = @email AND Password = @password", conn);
             command.Parameters.AddWithValue("@email", email);
             command.Parameters.AddWithValue("@password", password);
@@ -295,7 +295,7 @@ namespace RepositoryLayer
 
          public async Task<List<ProfileDTO>> DisplayCurrentProfileAsync(string email, string password)
          {
-            SqlConnection conn = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM Users AND Login WHERE Email = @email AND Password = @password", conn);
             command.Parameters.AddWithValue("@email", email);
             command.Parameters.AddWithValue("@password", password);
@@ -317,7 +317,7 @@ namespace RepositoryLayer
         //To query the orders table to return order information using the Guid orderTracker
         public async Task<List<ViewOrder>> ViewOrderAsync(Guid OrderTracker)
         {
-            SqlConnection connect = new SqlConnection("Server=tcp:group4project.database.windows.net,1433;Initial Catalog=group4projectserver;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             using (SqlCommand command = new SqlCommand($"SELECT * FROM Orders WHERE OrderTracker = @OrderTracker", connect))
             {
                 command.Parameters.AddWithValue("@OrderTracker", OrderTracker);// add dynamic data like this to protect against SQL Injection.
