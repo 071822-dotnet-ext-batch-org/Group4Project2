@@ -1,33 +1,35 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 
 </head>
-<body> -->
+<body>
   <h1>Best Books of 2022</h1>
 
   <div *ngFor="let product of products">
   
-    <h4>
-      <a [title]="product.name + ' details'">
-        {{ product.name }}
-      </a>
-    </h4>
+    <h3>
+      <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.isbn]">
+      {{ product.name }}
+    </a>
+    </h3>
   
     
       <p *ngIf="product.description">
       Description: {{ product.description }}
       </p>
       
-      <button type="button" (click)="addToCart()">
+      <!-- <button type="button" (click)="addToCart()">
         Add to Cart
-      </button>
+      </button> -->
       
       <app-product-alerts
-        [product]="product">
+        [product]="product"
         (notify)="onNotify()">
       </app-product-alerts>
   
   </div>
-<!-- </body>
-</html> -->
+</body>
+</html>
