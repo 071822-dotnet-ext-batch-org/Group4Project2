@@ -24,7 +24,7 @@ export const products = [
         isbn: "978-0316347006",
         name: "How to Train Your Dragon Box Set",
         author: "Cressida Cowell",
-        inStock: 2,
+        inStock: 0,
         genre: "Fantasy",
         description: "Follows the adventures of a young Viking named Hiccup Horrendous Haddock III (voiced by Jay Baruchel), son of Stoick the Vast, leader of the Viking island of Berk. Although initially dismissed as a clumsy and underweight misfit, he soon becomes renowned as a courageous expert in dragons, alongside Toothless, a member of the rare Night Fury breed as his flying mount and his closest companion.",
         price: 39.99, 
