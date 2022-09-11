@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors((options) =>
 {
-    OperationStatus.AddPolicy(name: "allowAll", policy1 =>
+    options.AddPolicy(name: "allowAll", policy1 =>
     {
         policy1.WithOrigins("https://127.0.0.1:7010")
         .AllowAnyHeader()
