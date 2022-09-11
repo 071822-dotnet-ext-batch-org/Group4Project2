@@ -1,3 +1,10 @@
+using System.Buffers;
+using System.Security.AccessControl;
+using System.IO;
+using BusinessLayer;
+using RepositoryLayer;
+using System.Data.SqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +13,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors((options) =>
+{
+    OperationStatus.AddPolicy(name: "allowAll", policy1 =>
+    {
+        policy1.WithOrigins("https://127.0.0.1:7010")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+var string1 = builder.Configuration["ConnectionStrings:OurBooksAPIDB"];
 
 var app = builder.Build();
 
@@ -17,6 +34,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("allowAll");
 
 app.UseAuthorization();
 
