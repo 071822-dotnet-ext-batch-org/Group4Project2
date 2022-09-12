@@ -12,6 +12,7 @@ pr: none
 trigger:
   branches:
     include:
+    - main
     - development
   paths:
     include:
