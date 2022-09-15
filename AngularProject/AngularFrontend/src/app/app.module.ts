@@ -10,16 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
+import {AuthModule } from '@auth0/auth0-angular'
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-      { path: 'products/:productisbn', component: ProductDetailsComponent },
-      { path: 'cart', component: CartComponent },
-    ])
-  ],
   declarations: [
     AppComponent,
     TopBarComponent,
@@ -28,7 +21,28 @@ import { CartComponent } from './cart/cart.component';
     ProductDetailsComponent,
     CartComponent,
   ],
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      { path: '', component: ProductListComponent },
+      { path: 'products/:productisbn', component: ProductDetailsComponent },
+      { path: 'cart', component: CartComponent },
+    ]),
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
+
+// @AuthModule({
+//   AuthModule.forRoot([
+//     domain: 'dev-9hex7qt2.us.auth0.com',
+//     clientId: '5GSDTOk5VV9d5ZgiYetm1NmP0VA6EXr2'
+//   ]),
+// })
+
 export class AppModule { }

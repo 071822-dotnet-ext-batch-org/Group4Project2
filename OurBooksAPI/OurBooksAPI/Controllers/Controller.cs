@@ -14,6 +14,9 @@ using BusinessLayer;
 using ModelsLayer;
 using Microsoft.AspNetCore.Routing.Internal;
 using System.ComponentModel;
+using System.IdentityModel.Tokens.Jwt;
+// using Microsoft.AspNetCore.Authentication.JwtBearer;
+// using Microsoft.AspNetCore.All;
 
 namespace OurBooksAPI.Controllers
 {
@@ -138,7 +141,7 @@ namespace OurBooksAPI.Controllers
         // }
 
 
-        [HttpPost("Login")]//Check the credentials
+        [HttpGet("Login")]//Check the credentials
         public async Task <ActionResult> LoginAsync(Credentials Login)//Member data transfer object to carry login credentials data between processes.
         {
          if (ModelState.IsValid)//Model Validation: was it possible to bind incoming values to MemberDTO?
@@ -150,6 +153,28 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
+
+        // [HttpGet]
+        // [Route("private")]
+        // [Authorize]
+        // public IActionResult Private()
+        // {
+        //     return Json(new
+        //     {
+        //         Message = "Hello from a private endpoint! You need to be authenticated to see this."
+        //     });
+        // }//EoSecureEndpointAuthorization
+
+        // [HttpGet]
+        // [Route("private-scoped")]
+        // [Authorize("read:messages")]
+        // public IActionResult Scoped()
+        // {
+        //     return Json(new
+        //     {
+        //         Message = "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this."
+        //     });
+        // }//EoScopedEndpointAuthorization
 
 
         [HttpGet("Profile")]//Retrieve the member profile
