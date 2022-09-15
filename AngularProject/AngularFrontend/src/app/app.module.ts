@@ -10,9 +10,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
+import { RegisterComponent } from './register/register.component';
+import { FilterComponent } from './filter/filter.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
@@ -27,6 +32,8 @@ import { CartComponent } from './cart/cart.component';
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
+    RegisterComponent,
+    FilterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
