@@ -14,7 +14,6 @@ namespace RepositoryLayer
 {
     public class Repository
     {
-
         //To query whether the customer account credentials exist
         public async Task<bool> EmailPassWordExists(string email, string password)
         {

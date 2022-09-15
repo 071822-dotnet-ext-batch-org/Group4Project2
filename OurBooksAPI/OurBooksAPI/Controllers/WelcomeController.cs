@@ -11,11 +11,11 @@ public class WelcomeController : ControllerBase {
         _logger = logger;
     }
 
-    /* enables the authorization check on the welcome view so that only 
-    authenticated users can access it */
-    [Authorize] // 👈 new code
-    public IActionResult Index()
-    {
-        return View();
-    }
+    /* Enables the authorization check on the welcome view so that only 
+    authenticated users can access it. this is razor syntax */
+    // [Authorize] // 👈 new code
+    // public IActionResult Index()
+    // {
+    //     return View();
+    // }
 }

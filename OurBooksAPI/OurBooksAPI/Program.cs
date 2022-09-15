@@ -11,13 +11,14 @@ using System.Data.SqlClient;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Auth0.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
 // using Microsoft.AspNetCore.All;
 
 var builder = WebApplication.CreateBuilder(args);
 
 WebApplication app = WebApplication.CreateBuilder(args);
-    .RegisterServices()
-    .Build();
+
+WebApplication.RegisterServices().Build();
 
 var startup = new Startup(builder.Configuration);
 startup.ConfigureServices(builder.Services);
@@ -27,9 +28,13 @@ startup.ConfigureServices(builder.Services);
 builder.Services
     .AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-    .AddEndpointsApiExplorer();
-    .AddSwaggerGen();
-    .AddCors((options) =>
+// builder.Services.AddDbContext<BatchContext>(options =>
+//     {
+//         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+//     });
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddCors((options) =>
     {
         options.AddPolicy(name: "allowAll", policy =>
         {
@@ -38,7 +43,7 @@ builder.Services
             .AllowAnyMethod();
         });
     });
-    .AddAuth0WebAppAuthentication(options => {
+builder.Services.AddAuth0WebAppAuthentication(options => {
         options.Domain = builder.Configuration["Auth0:Domain"];
         options.ClientId = builder.Configuration["Auth0:ClientId"];
         options.Scope = "openid profile email";
@@ -49,12 +54,12 @@ builder.Services
 // builder.Services.AddAuthorization();
 
 //Add services to the container.
-buiilder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews();
 
 
 var string1 = builder.Configuration["ConnectionStrings:OurBooksAPIDB"];
 
-var app = builder.Build();
+// var app = builder.Build();
 
 startup.Configure(app, builder.Environment);
 
@@ -96,7 +101,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.SetupMiddleware();
-    .Run();
 
 app.Run();
 

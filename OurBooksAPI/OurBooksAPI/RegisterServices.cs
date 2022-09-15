@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-public static class RegisterDependentServices
+public static class RegisterServices
 {
     public static WebApplicationBuilder RegisterServices(this WebApplicationBuilder builder)
     {
