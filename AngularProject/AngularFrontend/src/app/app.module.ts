@@ -1,31 +1,43 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
-import {AuthModule } from '@auth0/auth0-angular'
-import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AuthbuttonComponent } from './components/auth-button/auth-button.component';
 import { UserComponent } from './components/user/user.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { UserListComponent } from './components/user-list/user-list.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
+    NavBarComponent,
     ProductListComponent,
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent,
     AuthbuttonComponent,
     UserComponent,
+    UserListComponent
   ],
 
   imports: [
@@ -41,6 +53,7 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     AuthModule.forRoot({
      domain: 'http://dev-9hex7qt2.us.auth0.com',
      clientId: '5GSDTOk5VV9d5ZgiYetm1NmP0VA6EXr2',
+     audience: 'https://dev-9hex7qt2.us.auth0.com/api/v2/',
      httpInterceptor: {
         allowedList: ['https://localhost:7010/Profile'],
      }
@@ -54,7 +67,11 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
       multi: true,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 
 export class AppModule { }

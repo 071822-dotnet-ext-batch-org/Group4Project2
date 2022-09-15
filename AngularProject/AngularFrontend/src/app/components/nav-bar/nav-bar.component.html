@@ -2,11 +2,10 @@
          this property lets you know if the current user is authenticated or not.
          If the user is not authenticated, a Login link will be shown
         The logout link appears when the user is authenticated. The link points to the Logout() method -->
-    <nav>
-      <ul>
-        <li><a [routerLink]="/" routerLinkActive="active">Home</a></li>
-        <li *ngIf="auth.user$ | async as user">{{user.name}}</li>
-          <app-login>Logout</app-login>
-          <app-logout>Login</app-logout>
-        </ul>
-      </nav>
+<nav>
+    <ul>
+        <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/profile" roouterLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li>
+        <li><a routerLink="/user" routerLinkActive="active" *ngIf="auth.user$ | async as user">{{ user.name }}</a></li>
+    </ul>
+</nav>

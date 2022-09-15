@@ -6,7 +6,7 @@ import { AuthService } from '@auth0/auth0-angular';
 @Component({
   selector: 'app-login',
   template: './login.component.html',
-  styleUrls: ['.login.component.css']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent  implements OnInit{
   // Inject the authentication service into your component through the constructor
@@ -16,8 +16,6 @@ export class LoginComponent  implements OnInit{
 
   }
   login(): void{
-    this.auth.loginWithRedirect({
-
-    })
+    this.auth.loginWithRedirect()
   }
 }

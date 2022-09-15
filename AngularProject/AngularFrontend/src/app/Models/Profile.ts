@@ -4,6 +4,5 @@ export interface Profile{
   deliveryAddress: string;
   phone: string;
   email: string;
-  previousOrders: string;
-  password?: string;
+  previousOrders?: string;
 }

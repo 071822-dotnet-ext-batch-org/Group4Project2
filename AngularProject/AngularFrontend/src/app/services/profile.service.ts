@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../Models/Profile';
+import { Observable } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +11,15 @@ import { Profile } from '../Models/Profile';
 
 export class ProfileService {
 
-  private ApiUrl = 'https://localhost:7010';
-  private ApiUrl2 = 'http://localhost:5010';
-
   constructor(private http: HttpClient) { }
 
-  public getLogin(): Observable<Profile>
+  private rootUrl = 'https://localhost:7010';
+  private rootUrl2 = 'http://localhost:5010';
+
+
+  public getProfile(): Observable<Profile []>
   {
-    return this.http.get<Profile>(this.ApiUrl + "/Profile" || this.ApiUrl2 + "/Profile");
+    return this.http.get<Profile []>(this.rootUrl + "/Profile" || this.rootUrl2 + "/Profile");
   }
 
 }

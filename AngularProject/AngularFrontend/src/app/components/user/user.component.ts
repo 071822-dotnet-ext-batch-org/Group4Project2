@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.user$.subscribe( profile =>
-      (this.profileJson = JSON.stringify(profile, null, 2)))
+      (this.profileJson = JSON.stringify(profile, null, 2)));
   }
 
 }
