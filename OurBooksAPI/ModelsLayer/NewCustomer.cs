@@ -40,14 +40,14 @@ namespace ModelsLayer
         }
 
         //[StringLength(10, MinimumLength = 4)]
-        public Guid UserId { get; set; }
+        public Guid UserId { get; set; } = new Guid();
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string DeliveryAddress { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public Guid PreviousOrders { get; set; }
-        public string isAdmin { get; set; }
+        public string isAdmin { get; set; } = "no";
         
     }
 }
