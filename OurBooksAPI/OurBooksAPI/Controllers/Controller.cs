@@ -15,7 +15,8 @@ using ModelsLayer;
 using Microsoft.AspNetCore.Routing.Internal;
 using System.ComponentModel;
 using System.IdentityModel.Tokens.Jwt;
-// using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using
 // using Microsoft.AspNetCore.All;
 
 namespace OurBooksAPI.Controllers
@@ -178,6 +179,7 @@ namespace OurBooksAPI.Controllers
 
 
         [HttpGet("Profile")]//Retrieve the member profile
+        [Authorize]
         public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
         {
             if (ModelState.IsValid)

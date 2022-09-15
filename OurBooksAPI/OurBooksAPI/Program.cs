@@ -18,15 +18,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 WebApplication app = WebApplication.CreateBuilder(args);
 
-WebApplication.RegisterServices().Build();
+//WebApplication.RegisterServices().Build();
 
 var startup = new Startup(builder.Configuration);
 startup.ConfigureServices(builder.Services);
 
 // Add services to the container.
 
-builder.Services
-    .AddControllers();
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 // builder.Services.AddDbContext<BatchContext>(options =>
 //     {
@@ -50,12 +49,31 @@ builder.Services.AddAuth0WebAppAuthentication(options => {
     });
 
 //Register services here
-// buiilder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 // builder.Services.AddAuthorization();
 
 //Add services to the container.
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews();
 
+    builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        options.Authority = builder.Configuration["Auth0:Domain"];
+        options.Audience = builder.Configuration["Auth0:Audience"];
+    });
+
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("ourbooks: read-write", policy => 
+            policy.RequireAuthenticatedUser()
+            .RequireClaim("permissions", "ourbooks: read-write"));
+    });
+
+    // register the scope authorization handler
+    //services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 var string1 = builder.Configuration["ConnectionStrings:OurBooksAPIDB"];
 
@@ -90,6 +108,8 @@ app.UseRouting();
 
 app.UseCors("allowAll");
 
+app.UseHttpsRedirection();
+
 app.UseAuthentication();
 
 app.UseAuthorization();
@@ -108,23 +128,11 @@ app.Run();
 
 // public void ConfigureServices(IServiceCollection services)
 // {
-//     // Some code omitted for brevity...
+    // Some code omitted for brevity...
 
-//     string domain = $"https://{Configuration["Auth0:Domain"]}/";
-//     services.AddAuthentication(options =>
-//     {
-//         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//     }).AddJwtBearer(options =>
-//     {
-//         options.Authority = domain;
-//         options.Audience = Configuration["Auth0:ApiIdentifier"];
-//         options.TokenValidationParameters = new TokenValidationParameters
-//         {
-//           NameClaimType = ClaimTypes.NameIdentifier
-//         };
-//     });
-// }
+    //string domain = $"https://{Configuration["Auth0:Domain"]}/";
+
+
 
 
 // // Startup.cs
@@ -184,11 +192,5 @@ app.Run();
 // {
 //     //...
     
-//     services.AddAuthorization(options =>
-//     {
-//         options.AddPolicy("read:messages", policy => policy.Requirements.Add(new HasScopeRequirement("read:messages", domain)));
-//     });
 
-//     // register the scope authorization handler
-//     services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 // }

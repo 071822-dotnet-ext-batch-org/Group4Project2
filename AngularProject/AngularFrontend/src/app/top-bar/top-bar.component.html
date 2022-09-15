@@ -6,22 +6,6 @@
             </a>
         </div>
 
-        <!-- modify the page's markup by adding a check on the User.Identity.IsAuthenticated property
-         this property lets you know if the current user is authenticated or not.
-         If the user is not authenticated, a Login link will be shown
-        The logout link appears when the user is authenticated. The link points to the Logout() method -->
-        <div class="col-md-6 d-flex justify-content-end">
-         {% if (User.Identity.IsAuthenticated) %}
-          {
-          <a routerLink="/Welcome" style="padding: 10px;" class="button fancy-button">
-           Logout
-          </a>
-          } {% else %}{
-            <a routerLink="/Login" style="padding: 10px;" class="button fancy-button">
-              Login
-             </a>
-          }
-
           <div class="col-md-6 d-flex justify-content-end">
               <a routerLink="/cart" style="padding: 10px;"
               class="button fancy-button">
@@ -31,5 +15,4 @@
               </a>
           </div>
         </div>
-    </div>
 </div>

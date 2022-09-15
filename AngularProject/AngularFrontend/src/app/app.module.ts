@@ -12,6 +12,10 @@ import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import {AuthModule } from '@auth0/auth0-angular'
 import { HttpClientModule } from '@angular/common/http';
+import { AuthbuttonComponent } from './components/auth-button/auth-button.component';
+import { UserComponent } from './components/user/user.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
+    AuthbuttonComponent,
+    UserComponent,
   ],
 
   imports: [
@@ -32,17 +38,23 @@ import { HttpClientModule } from '@angular/common/http';
       { path: 'products/:productisbn', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
     ]),
+    AuthModule.forRoot({
+     domain: 'http://dev-9hex7qt2.us.auth0.com',
+     clientId: '5GSDTOk5VV9d5ZgiYetm1NmP0VA6EXr2',
+     httpInterceptor: {
+        allowedList: ['https://localhost:7010/Profile'],
+     }
+    }),
   ],
 
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
-
-// @AuthModule({
-//   AuthModule.forRoot([
-//     domain: 'dev-9hex7qt2.us.auth0.com',
-//     clientId: '5GSDTOk5VV9d5ZgiYetm1NmP0VA6EXr2'
-//   ]),
-// })
 
 export class AppModule { }

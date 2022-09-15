@@ -1,0 +1,2 @@
+<app-login *ngIf="(auth.isAuthenticated$ | async) === false"></app-login>
+<app-logout *ngIf="(auth.isAuthenticated$ | async) === false"></app-logout>

@@ -1,0 +1,12 @@
+        <!-- modify the page's markup by adding a check on the User.Identity.IsAuthenticated property
+         this property lets you know if the current user is authenticated or not.
+         If the user is not authenticated, a Login link will be shown
+        The logout link appears when the user is authenticated. The link points to the Logout() method -->
+    <nav>
+      <ul>
+        <li><a [routerLink]="/" routerLinkActive="active">Home</a></li>
+        <li *ngIf="auth.user$ | async as user">{{user.name}}</li>
+          <app-login>Logout</app-login>
+          <app-logout>Login</app-logout>
+        </ul>
+      </nav>
