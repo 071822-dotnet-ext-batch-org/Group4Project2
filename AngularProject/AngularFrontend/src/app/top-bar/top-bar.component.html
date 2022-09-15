@@ -13,12 +13,12 @@
          If the user is not authenticated, a Login link will be shown
         The logout link appears when the user is authenticated. The link points to the Logout() method-->
         <div class="col-md-6 d-flex justify-content-end">
-          @if (User.Identity.IsAuthenticated)
+         {% if (User.Identity.IsAuthenticated) %}
           {
           <a routerLink="/Welcome" style="padding: 10px;" class="button fancy-button">
            Logout
           </a>
-          } else {
+          } {% else %}{
             <a routerLink="/Login" style="padding: 10px;"
             class="button fancy-button">
               Login
