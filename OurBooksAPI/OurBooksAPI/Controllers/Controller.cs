@@ -16,8 +16,10 @@ using Microsoft.AspNetCore.Routing.Internal;
 using System.ComponentModel;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using
-// using Microsoft.AspNetCore.All;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace OurBooksAPI.Controllers
 {
@@ -154,30 +156,6 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
-
-        // [HttpGet]
-        // [Route("private")]
-        // [Authorize]
-        // public IActionResult Private()
-        // {
-        //     return Json(new
-        //     {
-        //         Message = "Hello from a private endpoint! You need to be authenticated to see this."
-        //     });
-        // }//EoSecureEndpointAuthorization
-
-        // [HttpGet]
-        // [Route("private-scoped")]
-        // [Authorize("read:messages")]
-        // public IActionResult Scoped()
-        // {
-        //     return Json(new
-        //     {
-        //         Message = "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this."
-        //     });
-        // }//EoScopedEndpointAuthorization
-
-
         [HttpGet("Profile")]//Retrieve the member profile
         [Authorize]
         public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
@@ -197,6 +175,7 @@ namespace OurBooksAPI.Controllers
         /// <param name="OrderTracker"></param>
         /// <returns></returns>
         [HttpGet("ViewOrderAsync")]
+        [Authorize]
         public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
         {
             List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);

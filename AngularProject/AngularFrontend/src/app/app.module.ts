@@ -18,7 +18,7 @@ import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AuthbuttonComponent } from './components/auth-button/auth-button.component';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { UserComponent } from './components/user/user.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 
@@ -35,7 +35,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    AuthbuttonComponent,
+    AuthButtonComponent,
     UserComponent,
     UserListComponent
   ],
