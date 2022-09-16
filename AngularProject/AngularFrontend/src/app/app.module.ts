@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { FilterComponent } from './filter/filter.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '@auth0/auth0-angular';
 
 @NgModule({
   imports: [

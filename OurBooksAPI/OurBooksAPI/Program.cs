@@ -28,6 +28,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Auth0 goes here
+/*
+builder.Services.AddAuthentication(options =>
+{
+  options.DefaultAuthenticateScheme = JwtBearerExtensions.AuthenticateScheme;
+})
+
+
+
+*/
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
