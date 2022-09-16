@@ -1,0 +1,12 @@
+<div>
+  <h1>Profile</h1>
+  <ul>
+      <li *ngFor="let p of profile">
+          <h3>{{ p.firstName }} {{ p.lastName}}</h3>
+          <h4>{{ p.deliveryAddress }} </h4>
+          <h4>{{ p.email }}</h4>
+          <h4>{{ p.phone }}</h4>
+          <h4>{{ p.previousOrders }}</h4>
+      </li>
+  </ul>
+</div>

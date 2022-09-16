@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
+<head><meta charset="utf-8">
 
 </head>
 <body>
   <h1>Our Featured Books of the Month!</h1>
 
   <div *ngFor="let product of products">
-  
+
     <h3>
       <a
       [title]="product.name + ' details'"
@@ -15,21 +15,21 @@
       {{ product.name }}
     </a>
     </h3>
-  
-    
+
+
       <p *ngIf="product.description">
       Description: {{ product.description }}
       </p>
-      
+
       <!-- <button type="button" (click)="addToCart()">
         Add to Cart
       </button> -->
-      
+
       <app-product-alerts
         [product]="product"
         (notify)="onNotify()">
       </app-product-alerts>
-  
+
   </div>
 </body>
 </html>

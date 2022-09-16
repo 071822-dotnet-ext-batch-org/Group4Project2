@@ -14,7 +14,6 @@ namespace RepositoryLayer
 {
     public class Repository
     {
-
         //To query whether the customer account credentials exist
         public async Task<bool> EmailPassWordExists(string email, string password)
         {
@@ -293,12 +292,11 @@ namespace RepositoryLayer
         }//EoGetCredentialsAsync
 
 
-         public async Task<List<ProfileDTO>> DisplayCurrentProfileAsync(string email, string password)
+         public async Task<List<ProfileDTO>> DisplayCurrentProfileAsync(string email)
          {
             SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM Users AND Login WHERE Email = @email AND Password = @password", conn);
+            using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM Users LEFT JOIN Login ON Email = @email", conn);
             command.Parameters.AddWithValue("@email", email);
-            command.Parameters.AddWithValue("@password", password);
             conn.Open();
             SqlDataReader? ret = await command.ExecuteReaderAsync();
             List<ProfileDTO> rtnList = new List<ProfileDTO>();

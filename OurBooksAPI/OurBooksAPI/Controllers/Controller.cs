@@ -14,6 +14,12 @@ using BusinessLayer;
 using ModelsLayer;
 using Microsoft.AspNetCore.Routing.Internal;
 using System.ComponentModel;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace OurBooksAPI.Controllers
 {
@@ -138,7 +144,7 @@ namespace OurBooksAPI.Controllers
         // }
 
 
-        [HttpPost("Login")]//Check the credentials
+        [HttpGet("Login")]//Check the credentials
         public async Task <ActionResult> LoginAsync(Credentials Login)//Member data transfer object to carry login credentials data between processes.
         {
          if (ModelState.IsValid)//Model Validation: was it possible to bind incoming values to MemberDTO?
@@ -150,17 +156,16 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
-
-
         [HttpGet("Profile")]//Retrieve the member profile
+        [Authorize]
         public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
         {
             if (ModelState.IsValid)
             {
-                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email, Profile.Password);
+                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email);
                 return Ok(result);
             }
-            return NotFound("Something went wrong. Did you input the correct username and password?");
+            return NotFound("Something went wrong. Did you input the correct username?");
         }//EoProfileAsync
 
 
@@ -170,6 +175,7 @@ namespace OurBooksAPI.Controllers
         /// <param name="OrderTracker"></param>
         /// <returns></returns>
         [HttpGet("ViewOrderAsync")]
+        [Authorize]
         public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
         {
             List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);
