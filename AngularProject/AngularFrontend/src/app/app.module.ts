@@ -23,7 +23,6 @@ import { UserComponent } from './components/user/user.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 //import { RegisterComponent } from './register/register.component';
 import { FilterComponent } from './filter/filter.component';
-import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
 
 @NgModule({
@@ -69,18 +68,8 @@ import { AuthService } from '@auth0/auth0-angular';
       useClass: AuthHttpInterceptor,
       multi: true,
     }
-
-  declarations: [
-    AppComponent,
-    TopBarComponent,
-    ProductListComponent,
-    ProductAlertsComponent,
-    ProductDetailsComponent,
-    CartComponent,
-    //RegisterComponent,
-    FilterComponent
-
   ],
+
   bootstrap: [AppComponent],
 
   schemas: [
