@@ -1,5 +1,7 @@
 //Import modules
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CheckoutRequestService } from '../services/checkout.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 //Add metadata components
 @Component({
@@ -10,7 +12,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 //Allows class to be exported and used in other modules
 export class ProductSearchComponent implements OnInit {
 
-  constructor() { }
+  currentTitle: any; //Accepts and type
+  constructor(private CR: CheckoutRequestService) { }
 
   ngOnInit(): void {
   }
@@ -23,4 +26,11 @@ export class ProductSearchComponent implements OnInit {
     this.searchTextChanged.emit(this.enteredSearchValue)
 
   }
+
+  displayTitle() {
+    this.CR.getTitle().subscribe(data => {
+      this.currentTitle = data;
+    })
+  }
+
 }

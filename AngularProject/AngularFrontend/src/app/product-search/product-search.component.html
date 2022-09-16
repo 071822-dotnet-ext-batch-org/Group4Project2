@@ -1,4 +1,18 @@
-<div class="search-container">
-  <span>Search:</span>
-  <input type="text" > <!--[{ngModel}]="enteredSearchValue" (input)="onSearchTextChanged()"> -->
-</div>
+
+  <div class="search-container" *ngIf>
+    <span>Search:</span>
+    <input type="text" > <!--[{ngModel}]="enteredSearchValue" (input)="onSearchTextChanged()"> -->
+  </div>
+<!--
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <span matPrefix> </span>
+    <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="search">
+    <button matSuffix mat-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</br>
+  {{search}}
+</form>
+-->
