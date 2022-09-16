@@ -8,7 +8,7 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -51,6 +51,7 @@ import { AuthService } from '@auth0/auth0-angular';
       { path: '', component: ProductListComponent },
       { path: 'products/:productisbn', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'components/auth-button', component: AuthButtonComponent}
     ]),
     AuthModule.forRoot({
      domain: 'http://dev-9hex7qt2.us.auth0.com',
