@@ -7,6 +7,7 @@ import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 //import { RegisterComponent } from './register/register.component';
 import { FilterComponent } from './filter/filter.component';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
 
   {
     path:'components/user', component:UserComponent, canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'components/auth-button', component:AuthButtonComponent
   }
 
   //{ path: 'register', component: RegisterComponent}
