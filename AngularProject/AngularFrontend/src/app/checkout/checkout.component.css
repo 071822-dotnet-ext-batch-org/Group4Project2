@@ -1,0 +1,127 @@
+/* Creates boxes*/
+* {
+  box-sizing: border-box;
+}
+
+/*top-bar template*/
+.top-bar {
+  background-color: rgb(49, 219, 154);
+  width: 1000px;
+  height: 500px;
+
+}
+
+/*top-bar template*/
+h1 {
+  color: aliceblue;
+  text-decoration: underline;
+}
+
+/*top-bar template*/
+a {
+  color: aliceblue;
+}
+
+/* body*/
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+
+/* center box */
+.checkout-panel {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 1000px;
+  height: 600px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* keeps buttons on bottom */
+.panel-body {
+  padding: 45px 80px 0;
+  flex: 1;
+}
+
+/* title*/
+.title {
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 40px;
+  color: #2e2e2e;
+}
+
+/* makes boxes horizontal and not all verticle*/
+.input-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*CVV label*/
+.info {
+  font-size: 15px;
+  font-weight: 100;
+  display: block;
+  margin-top: 50px;
+  opacity: .5;
+  color: #2e2e2e;
+  position: relative;
+  top: 75px;
+}
+
+/*Box size and font*/
+input[type='text'],
+input[type='password'] {
+  font-size: 20px;
+  width: 95%;
+  height: 50px;
+  padding-right: 30px;
+  padding-left: 15px;
+  color: rgba(46, 46, 46, .8);
+  border: 1px solid rgb(225, 225, 225);
+  border-radius: 5px;
+  outline: none;
+}
+
+/*Color around box in current use*/
+input[ type='text']:focus,
+input[type='text']:focus {
+  border-color: rgb(234, 17, 17);
+}
+
+/*valid thru and cvv are horizontal not vertical*/
+.small-inputs {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+/*Button shape*/
+.btn {
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border: black;
+  border-radius: 25px;
+  margin-right: 50px;
+}
+
+/*Back button*/
+.back-btn {
+  color: #f3f3f9;
+  background: rgb(232, 57, 41);
+}
+
+/*Confirm payment button*/
+.next-btn {
+  color: #fff;
+  background: #14b737;
+}

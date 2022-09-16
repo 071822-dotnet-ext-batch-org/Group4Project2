@@ -21,7 +21,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { UserComponent } from './components/user/user.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-
+//import { RegisterComponent } from './register/register.component';
+import { FilterComponent } from './filter/filter.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,17 @@ import { UserListComponent } from './components/user-list/user-list.component';
       useClass: AuthHttpInterceptor,
       multi: true,
     }
+
+  declarations: [
+    AppComponent,
+    TopBarComponent,
+    ProductListComponent,
+    ProductAlertsComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    //RegisterComponent,
+    FilterComponent
+
   ],
   bootstrap: [AppComponent],
 

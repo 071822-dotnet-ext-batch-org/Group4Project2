@@ -25,11 +25,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string allowAll = "_allowAll";
+
+string MyAllowAllOrigins = "_myAllowOrigins";
 builder.Services.AddCors( options =>
 {
-    options.AddPolicy( name: allowAll,
-    builder =>
+    options.AddPolicy(name: MyAllowAllOrigins,
+    builder=>
     {
         builder.AllowAnyOrigin()
                 .AllowAnyHeader()
@@ -72,11 +73,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseCors("allowAll");
 
 app.UseHttpsRedirection();
 
@@ -89,5 +89,7 @@ app.MapControllers();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseCors(MyAllowAllOrigins);
 
 app.Run();
