@@ -1,17 +1,18 @@
 <div>
   <app-top-bar></app-top-bar>
-  
+
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/register"><app-register></app-register></a>
       </div>
     </nav>
-  <app-filter></app-filter>
+    <app-product-search></app-product-search>
+    <app-filter></app-filter>
   <div class="container">
-      
+
       <router-outlet></router-outlet>
     </div>
-  
+
 </div>
 <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
@@ -31,4 +32,3 @@
       </div>
   </div>
 </div> -->
-

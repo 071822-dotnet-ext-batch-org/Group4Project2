@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { FilterComponent } from './filter/filter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { AuthService } from '@auth0/auth0-angular';
     ProductDetailsComponent,
     CartComponent,
     RegisterComponent,
-    FilterComponent
+    FilterComponent,
+    ProductSearchComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
