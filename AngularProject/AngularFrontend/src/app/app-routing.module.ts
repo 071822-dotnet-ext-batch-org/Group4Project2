@@ -18,11 +18,13 @@ const routes: Routes = [
   },
 
   {
-    path:'profile', component:ProfileComponent
+    path:'profile', component:ProfileComponent,
+    canActivate: [AuthGuard]
   },
 
   {
-    path:'components/user-list', component:UserListComponent
+    path:'components/user-list', component:UserListComponent,
+    canActivate: [AuthGuard]
   },
 
   {
@@ -34,7 +36,6 @@ const routes: Routes = [
   }
 
 
-  //{ path: 'register', component: RegisterComponent}
 
 ];
 
