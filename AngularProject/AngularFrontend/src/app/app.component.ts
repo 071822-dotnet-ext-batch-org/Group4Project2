@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { NgModule } from '@angular/core';
-// import { HttpClientModule} from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule} from '@angular/common/http';
 
 
-// @NgModule({
-//   imports: [
-//     BrowserModule,
-//     HttpClientModule,
-//   ],
-// })
-// export class AppModule { }
+ @NgModule({
+   imports: [
+     BrowserModule,
+     HttpClientModule,
+   ],
+ })
+ export class AppModule { }
 
 
 @Component({
@@ -22,5 +22,3 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'OurBooks';
 }
-
-

@@ -3,7 +3,9 @@
          If the user is not authenticated, a Login link will be shown
         The logout link appears when the user is authenticated. The link points to the Logout() method -->
 
-              <a href="">
+              
+        
+        <a href="">
                   <h1>Our Book Store</h1>
               </a>
 
@@ -14,12 +16,15 @@
                 <!-- TODO add item count ({{itemCount()}}) -->
                 </a>
 
+
 <nav>
+ <div class="links">
     <ul>
         <li><a routerLink="/" routerLinkActive="active">Home</a></li>
         <li><app-auth-button></app-auth-button></li>
-        <!-- <li><a routerLink="/profile" roouterLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
+        <!-- <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
         <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">{{ user.name }}</a></li>
     </ul>
-</nav>
+ </div>        
 
+</nav>

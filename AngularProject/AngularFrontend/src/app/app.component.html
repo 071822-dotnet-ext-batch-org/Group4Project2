@@ -1,4 +1,6 @@
-<!--
+
+<!---
+
 <div>
   <app-top-bar></app-top-bar>
 
@@ -7,30 +9,69 @@
         <a class="nav-item nav-link" routerLink="/register"><app-register></app-register></a>
       </div>
     </nav>
-  <app-filter></app-filter>
-  <div class="container">
+
+    <app-product-search></app-product-search>
+    <app-filter></app-filter>
+    <div class="container">
       <router-outlet></router-outlet>
-  </div>
-  <app-nav-bar></app-nav-bar>
+    </div>
 </div>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+
+-->
+
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
+
   <div class="navbar-nav">
+
       <a class="nav-item nav-link" routerLink="/">Home</a>
       <a class="nav-item nav-link" routerLink="/login">Login</a>
       <a class="nav-item nav-link" routerLink="/register"><app-register></app-register>Register</a>
-  </div>
-</nav> -->
-
-<!-- main content container -->
-<!-- <div class="jumbotron">
-  <div class="container">
+    </div>
+  </nav> 
+  
+  <-- main content container -->
+  <!-- <div class="jumbotron">
+    <div class="container">
       <div class="row">
-          <div class="col-sm-8 offset-sm-2">
-              <router-outlet></router-outlet>
-          </div>
+        <div class="col-sm-8 offset-sm-2">
+          <router-outlet></router-outlet>
+        </div>
       </div>
   </div>
 </div> -->
 
-<app-nav-bar></app-nav-bar>
-<router-outlet></router-outlet>
+
+<!-- Prefered topbar -->
+  <div>
+  <app-top-bar></app-top-bar>
+  <div>
+    <div style="background-color: rgb(109, 199, 184);">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="">
+            <h1>Our Book Store</h1>
+          </a>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+          <a routerLink="/cart" style="padding: 10px;" class="button fancy-button">
+            <i class="fas fa-shopping-cart"></i>
+            Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="/login">Login</a>
+      <a class="nav-item nav-link" routerLink="/register">Register</a>
+      <app-product-search></app-product-search>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+
+<!--<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet> -->
+

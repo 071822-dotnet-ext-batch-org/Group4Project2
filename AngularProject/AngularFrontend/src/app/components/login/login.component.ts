@@ -13,10 +13,10 @@ export class LoginComponent  implements OnInit{
   constructor(public auth: AuthService) {}
 
   ngOnInit(): void {
-
   }
+
   login(): void{
-    this.auth.loginWithRedirect()
 
-  }
+    this.auth.loginWithRedirect()
+  }  
 }

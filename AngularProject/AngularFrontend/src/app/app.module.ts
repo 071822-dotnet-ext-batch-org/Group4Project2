@@ -5,6 +5,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from '@auth0/auth0-angular';
+import { ProductSearchComponent } from './product-search/product-search.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -26,6 +30,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment as env } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -44,12 +49,14 @@ import { environment as env } from 'src/environments/environment';
     FilterComponent,
     ShippingComponent,
     ProductSearchComponent
+
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
@@ -71,6 +78,7 @@ import { environment as env } from 'src/environments/environment';
     //  }
     }),
   ],
+
 
   providers: [
     {
