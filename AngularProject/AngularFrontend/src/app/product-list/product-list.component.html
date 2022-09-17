@@ -18,14 +18,9 @@
       </a>
     </h3>
 
-
       <p *ngIf="product.description">
       <b>Description:</b> {{ product.description }}
       </p>
-
-      <!-- <button type="button" (click)="addToCart()">
-        Add to Cart
-      </button> -->
 
       <app-product-alerts
         [product]= "product"

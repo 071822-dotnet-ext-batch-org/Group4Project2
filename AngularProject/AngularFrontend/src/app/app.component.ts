@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 
 
-// @NgModule({
-//   imports: [
-//     BrowserModule,
-//     HttpClientModule,
-//   ],
-// })
-// export class AppModule { }
+ @NgModule({
+   imports: [
+     BrowserModule,
+     HttpClientModule,
+   ],
+ })
+ export class AppModule { }
 
 
 @Component({
@@ -22,5 +22,3 @@ import { HttpClientModule} from '@angular/common/http';
 export class AppComponent {
   title = 'OurBooks';
 }
-
-

@@ -5,9 +5,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from '@auth0/auth0-angular';
-//import { RegisterComponent } from './register/register.component';
-import { FilterComponent } from './filter/filter.component';
-import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CartComponent } from './cart/cart.component';
+
 
 const routes: Routes = [
   {
@@ -16,16 +16,22 @@ const routes: Routes = [
   {
     path:'product/:productId', component:ProductDetailsComponent
   },
-
+  { path: 'register', component: RegisterComponent},
+  { path: 'search/:searchTerm', component: ProductListComponent},
   {
     path:'components/user', component:UserComponent, canActivate: [AuthGuard]
   },
+      //////////uncomment////////
+ // {// Added for cart to payment
+ //   path: 'cart', component: CartComponent
+ // },
 
-  {
-    path: 'components/auth-button', component:AuthButtonComponent
-  }
+  //{
+ //   path: 'components/auth-button', component:AuthButtonComponent
+ // }
 
   //{ path: 'register', component: RegisterComponent}
+
 
 ];
 
