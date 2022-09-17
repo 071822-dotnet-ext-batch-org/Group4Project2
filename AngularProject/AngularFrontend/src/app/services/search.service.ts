@@ -6,12 +6,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CheckoutRequestService {
+export class ProductSearchService {
 
   private ApiUrl = "https:localhost:7010";
 
   //http object injected with apiUrl dependency
   constructor(private http: HttpClient) { }
 
-
+  // Get request returning title
+  public getTitle(): Observable<ProductInfoDto> { //returns get request of observable
+    return this.http.get<ProductInfoDto>(this.ApiUrl + "/title");
+  }
 }

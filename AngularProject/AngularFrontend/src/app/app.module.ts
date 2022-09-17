@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
-
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,15 +14,14 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from '@auth0/auth0-angular';
+import { ProductSearchComponent } from './product-search/product-search.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { RegisterComponent } from './components/register/register.component';
-import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { UserComponent } from './components/user/user.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-//import { RegisterComponent } from './register/register.component';
-import { FilterComponent } from './filter/filter.component';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +36,15 @@ import { AuthService } from '@auth0/auth0-angular';
     RegisterComponent,
     AuthButtonComponent,
     UserComponent,
-    UserListComponent
+    UserListComponent,
+    ProductSearchComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
@@ -61,6 +62,7 @@ import { AuthService } from '@auth0/auth0-angular';
      }
     }),
   ],
+
 
   providers: [
     {
