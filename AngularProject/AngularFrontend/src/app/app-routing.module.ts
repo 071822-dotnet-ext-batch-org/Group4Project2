@@ -21,9 +21,17 @@ const routes: Routes = [
   {
     path:'components/user', component:UserComponent, canActivate: [AuthGuard]
   },
-  {// Added for cart to payment
-    path: 'cart', component: CartComponent
-  },
+      //////////uncomment////////
+ // {// Added for cart to payment
+ //   path: 'cart', component: CartComponent
+ // },
+
+  //{
+ //   path: 'components/auth-button', component:AuthButtonComponent
+ // }
+
+  //{ path: 'register', component: RegisterComponent}
+
 
 ];
 

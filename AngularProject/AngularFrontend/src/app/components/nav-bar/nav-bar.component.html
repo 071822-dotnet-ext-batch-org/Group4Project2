@@ -3,6 +3,18 @@
          If the user is not authenticated, a Login link will be shown
         The logout link appears when the user is authenticated. The link points to the Logout() method -->
 
+              <a href="">
+                  <h1>Our Book Store</h1>
+              </a>
+
+                <a routerLink="/cart" style="padding: 10px;"
+                class="button fancy-button">
+                <i class="fas fa-shopping-cart"></i>
+                 Checkout
+                <!-- TODO add item count ({{itemCount()}}) -->
+                </a>
+
+
 <nav>
     <ul>
       <li><a routerLink="/" routerLinkActive="active">Home</a></li>
