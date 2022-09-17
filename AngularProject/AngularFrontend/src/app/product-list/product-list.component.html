@@ -4,27 +4,30 @@
 
 </head>
 <body>
-  <h1>Our Featured Books of the Month!</h1>
-
+  <img src="Screen Shot 2022-09-17 at 3.00.58 PM.png" alt="Used Books" width="500" height="600">
+  
+  <h1><b>Our Featured Books of the Month!</b></h1>
+  
   <div *ngFor="let product of products">
 
     <h3>
-      <a
-      [title]="product.name + ' details'"
+      <a 
+      [title] ="product.name + ' details'"
       [routerLink]="['/products', product.isbn]">
       {{ product.name }}
-    </a>
+      </a>
     </h3>
 
       <p *ngIf="product.description">
-      Description: {{ product.description }}
+      <b>Description:</b> {{ product.description }}
       </p>
 
       <app-product-alerts
-        [product]="product"
+        [product]= "product"
         (notify)="onNotify()">
       </app-product-alerts>
 
   </div>
+  <img src="Screen Shot 2022-09-17 at 3.00.58 PM.png" alt="Used Books" width="500" height="600">
 </body>
 </html>

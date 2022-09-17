@@ -10,7 +10,9 @@ import { ProductSearchComponent } from 'src/app/product-search/product-search.co
 
 export class NavBarComponent implements OnInit {
 
+
   constructor(public auth:AuthService) {}
+
 
   ngOnInit(): void {
   }
