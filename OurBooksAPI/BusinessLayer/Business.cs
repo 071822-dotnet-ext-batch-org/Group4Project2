@@ -125,9 +125,9 @@ namespace BusinessLayer
 
 
 
-        public async Task<List<ProfileDTO>> DisplayProfileAsync(string email, string password)
+        public async Task<List<ProfileDTO>> DisplayProfileAsync(string email)
         {
-            List<ProfileDTO> profile = await this._repo.DisplayCurrentProfileAsync(email, password);//Returns profile from repo
+            List<ProfileDTO> profile = await this._repo.DisplayCurrentProfileAsync(email);//Returns profile from repo
             return profile;
         }//EoDisplayProfileAsync
 
