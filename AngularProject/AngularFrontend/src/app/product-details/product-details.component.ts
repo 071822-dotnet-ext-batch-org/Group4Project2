@@ -21,7 +21,7 @@ export class ProductDetailsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const productIsbnFromRoute = (routeParams.get('productisbn'));
 
-    //Find the product that correspond with the isbn provided in route. 
+    //Find the product that correspond with the isbn provided in route.
     this.product = products.find(product => product.isbn === productIsbnFromRoute);
   }
   addToCart(product: Product) {

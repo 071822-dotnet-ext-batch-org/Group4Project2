@@ -8,7 +8,7 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }

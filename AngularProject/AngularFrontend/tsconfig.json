@@ -31,5 +31,8 @@
     "strictTemplates": true
   },
 
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+
+  "resolveJsonModule": true
+
 }

@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(public auth: AuthService, @Inject(DOCUMENT) private doc: Document) { }
+  constructor(private auth: AuthService, @Inject(DOCUMENT) private doc: Document) { }
 
   ngOnInit(): void {
   }
