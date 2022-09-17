@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { UserComponent } from './components/user/user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 //import { RegisterComponent } from './register/register.component';
 import { FilterComponent } from './filter/filter.component';
@@ -18,11 +18,11 @@ const routes: Routes = [
   },
 
   {
-    path:'components/user', component:UserComponent, canActivate: [AuthGuard]
+    path:'profile', component:ProfileComponent
   },
 
   {
-    path:'components/user-list', component:UserListComponent, canActivate: [AuthGuard]
+    path:'components/user-list', component:UserListComponent
   },
 
   {

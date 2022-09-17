@@ -18,7 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
-import { UserComponent } from './components/user/user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 //import { RegisterComponent } from './register/register.component';
 import { FilterComponent } from './filter/filter.component';
@@ -39,7 +39,7 @@ import { environment as env } from 'src/environments/environment';
     LogoutComponent,
     RegisterComponent,
     AuthButtonComponent,
-    UserComponent,
+    ProfileComponent,
     UserListComponent,
     FilterComponent,
     ShippingComponent,
