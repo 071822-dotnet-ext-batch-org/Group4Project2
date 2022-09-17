@@ -5,29 +5,25 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from '@auth0/auth0-angular';
-//import { RegisterComponent } from './register/register.component';
-import { FilterComponent } from './filter/filter.component';
-import { ProductSearchComponent } from './product-search/product-search.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
     path:'', component:ProductListComponent
   },
   {
-    path:'products/:productId', component:ProductDetailsComponent
+    path:'product/:productId', component:ProductDetailsComponent
   },
-<<<<<<< HEAD
   { path: 'register', component: RegisterComponent},
-  { path: 'product-search', component: ProductSearchComponent}
-=======
-
+  { path: 'search/:searchTerm', component: ProductListComponent},
   {
     path:'components/user', component:UserComponent, canActivate: [AuthGuard]
-  }
+  },
+  {// Added for cart to payment
+    path: 'cart', component: CartComponent
+  },
 
-  //{ path: 'register', component: RegisterComponent}
-
->>>>>>> f424bb1f79124b7fe58cd7bcb5aeaa44d933287b
 ];
 
 @NgModule({

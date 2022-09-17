@@ -1,3 +1,4 @@
+<!---
 <div>
   <app-top-bar></app-top-bar>
 
@@ -8,18 +9,12 @@
     </nav>
     <app-product-search></app-product-search>
     <app-filter></app-filter>
-  <div class="container">
-<<<<<<< HEAD
-
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
-
-=======
-      <router-outlet></router-outlet>
-  </div>
-  <app-nav-bar></app-nav-bar>
->>>>>>> f424bb1f79124b7fe58cd7bcb5aeaa44d933287b
 </div>
+-->
+
 <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/">Home</a>
@@ -38,3 +33,34 @@
       </div>
   </div>
 </div> -->
+
+<!-- Prefered topbar -->
+  <div>
+  <app-top-bar></app-top-bar>
+  <div>
+    <div style="background-color: rgb(109, 199, 184);">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="">
+            <h1>Our Book Store</h1>
+          </a>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+          <a routerLink="/cart" style="padding: 10px;" class="button fancy-button">
+            <i class="fas fa-shopping-cart"></i>
+            Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="/login">Login</a>
+      <a class="nav-item nav-link" routerLink="/register">Register</a>
+      <app-product-search></app-product-search>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
