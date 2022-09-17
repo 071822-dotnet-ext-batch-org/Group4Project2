@@ -7,7 +7,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './cart/cart.component';
-
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 
 const routes: Routes = [
   {
