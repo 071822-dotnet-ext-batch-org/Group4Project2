@@ -8,6 +8,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './cart/cart.component';
 
+
 const routes: Routes = [
   {
     path:'', component:ProductListComponent
