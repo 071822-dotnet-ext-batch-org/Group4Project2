@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { UserComponent } from './components/user/user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './cart/cart.component';
@@ -19,18 +19,30 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'search/:searchTerm', component: ProductListComponent},
   {
-    path:'components/user', component:UserComponent, canActivate: [AuthGuard]
+    path:'profile', component:ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path:'components/user-list', component:UserListComponent,
+    canActivate: [AuthGuard]
   },
       //////////uncomment////////
  // {// Added for cart to payment
  //   path: 'cart', component: CartComponent
  // },
 
-  //{
- //   path: 'components/auth-button', component:AuthButtonComponent
- // }
 
-  //{ path: 'register', component: RegisterComponent}
+  {
+    path: 'components/auth-button', component:AuthButtonComponent
+  },
+
+  //{
+  //  path:'filter', component:FilterComponent
+  //}
+
+
+
 
 
 ];

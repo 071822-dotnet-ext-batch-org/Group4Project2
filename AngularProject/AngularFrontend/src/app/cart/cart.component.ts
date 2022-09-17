@@ -22,10 +22,13 @@ import { FormBuilder } from '@angular/forms';
 export class CartComponent implements OnInit {
 
   items = this.cartService.getItems();
+
   counts = this.cartService.itemsCount();
+
 
   constructor(private cartService: CartService,
     private formbuilder: FormBuilder) { }
+
 
   checkoutForm = this.formbuilder.group({
     FirstName: '',

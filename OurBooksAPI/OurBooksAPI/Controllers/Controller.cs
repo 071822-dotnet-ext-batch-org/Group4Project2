@@ -29,7 +29,6 @@ namespace OurBooksAPI.Controllers
     {
 
         private Business _business = new Business(); // Creating a new business connection object
-        
 
         private readonly Business _businessLayer; //Private field to be used in constructor for Controller().
         public Controller() //Constructor to connect to BusinessLayer.
@@ -157,7 +156,6 @@ namespace OurBooksAPI.Controllers
             }
         }//EoLoginAsync
         [HttpGet("Profile")]//Retrieve the member profile
-        [Authorize]
         public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
         {
             if (ModelState.IsValid)
@@ -175,7 +173,6 @@ namespace OurBooksAPI.Controllers
         /// <param name="OrderTracker"></param>
         /// <returns></returns>
         [HttpGet("ViewOrderAsync")]
-        [Authorize]
         public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
         {
             List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);

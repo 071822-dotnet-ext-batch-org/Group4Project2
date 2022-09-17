@@ -11,8 +11,10 @@ import { ProductSearchService } from '../services/search.service';
 //Allows class to be exported and used in other modules
 export class ProductSearchComponent implements OnInit {
 
+
   currentTitle: any; //Accepts and type
   //constructor(public SS: SearchService) { }
+
 
   ngOnInit(): void {
   }
