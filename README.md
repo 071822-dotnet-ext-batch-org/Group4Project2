@@ -70,9 +70,6 @@ Answer
 
 Check to make sure that both the Angular and the .Net API are running. You can open multiple terminals in many if not all IDEs. The developers for this project used VS Code and Visual Studio.
 
-### Question
-
-Answer
 
 ## Additional Resources 🧩
 
@@ -83,3 +80,7 @@ These resources were helpful in getting the application running seamlessly:
 -   <https://www.w3.org/>
 -   <https://angular.io/tutorial/>
 -   <https://auth0.com/>
+
+Link to Angular Documentation for the E-Commerceapplication
+
+-   <http://127.0.0.1:5500/AngularProject/AngularFrontend/documentation/index.html>
