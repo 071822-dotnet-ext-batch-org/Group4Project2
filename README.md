@@ -36,8 +36,8 @@ The Ecommerce Web Application that provides the core features present in many co
 5.  Checkout
 
 -   Users are able to purchase their items
+-   Users see confirmation on the webpage and not just the console
     -   Need to be able to update database on backend
-    -   Need to see confirmation on the webpage and not just the console
 
 6.  View Previous Orders
 
