@@ -156,7 +156,7 @@ namespace OurBooksAPI.Controllers
             }
         }//EoLoginAsync
         [HttpGet("Profile")]//Retrieve the member profile
-        public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
+        public async Task<ActionResult<List<ProfileDTO>>> DisplayProfileAsync([FromQuery]Credentials Profile)//Member profile data
         {
             if (ModelState.IsValid)
             {

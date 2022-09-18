@@ -15,11 +15,13 @@
                 </a>
 
 <nav>
+  <div class="links">
     <ul>
         <li><a routerLink="/" routerLinkActive="active">Home</a></li>
         <li><app-auth-button></app-auth-button></li>
-        <!-- <li><a routerLink="/profile" roouterLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
+        <!-- <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
         <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">{{ user.name }}</a></li>
     </ul>
+  </div>
 </nav>
 
