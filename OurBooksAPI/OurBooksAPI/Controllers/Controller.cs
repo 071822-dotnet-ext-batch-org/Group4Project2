@@ -14,6 +14,12 @@ using BusinessLayer;
 using ModelsLayer;
 using Microsoft.AspNetCore.Routing.Internal;
 using System.ComponentModel;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace OurBooksAPI.Controllers
 {
@@ -23,7 +29,6 @@ namespace OurBooksAPI.Controllers
     {
 
         private Business _business = new Business(); // Creating a new business connection object
-        
 
         private readonly Business _businessLayer; //Private field to be used in constructor for Controller().
         public Controller() //Constructor to connect to BusinessLayer.
@@ -138,7 +143,7 @@ namespace OurBooksAPI.Controllers
         // }
 
 
-        [HttpPost("Login")]//Check the credentials
+        [HttpGet("Login")]//Check the credentials
         public async Task <ActionResult> LoginAsync(Credentials Login)//Member data transfer object to carry login credentials data between processes.
         {
          if (ModelState.IsValid)//Model Validation: was it possible to bind incoming values to MemberDTO?
@@ -150,17 +155,15 @@ namespace OurBooksAPI.Controllers
             return NotFound("No login credentials found");
             }
         }//EoLoginAsync
-
-
         [HttpGet("Profile")]//Retrieve the member profile
         public async Task<ActionResult> DisplayProfileAsync(Credentials Profile)//Member profile data
         {
             if (ModelState.IsValid)
             {
-                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email, Profile.Password);
+                List<ProfileDTO> result = await this._business.DisplayProfileAsync(Profile.Email);
                 return Ok(result);
             }
-            return NotFound("Something went wrong. Did you input the correct username and password?");
+            return NotFound("Something went wrong. Did you input the correct username?");
         }//EoProfileAsync
 
 

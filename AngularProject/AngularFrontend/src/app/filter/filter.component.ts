@@ -7,13 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
   // Show number in (0) next to filter bubble
-  @Input() all: number = 0
-  @Input() author: number = 0;
+  @Input() all: number = 0;
   @Input() outStock: number = 0;
   @Input() inStock: number = 0;
 }

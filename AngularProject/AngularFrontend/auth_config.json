@@ -1,0 +1,6 @@
+{
+  "domain": "dev-9hex7qt2.us.auth0.com",
+  "clientId": "5GSDTOk5VV9d5ZgiYetm1NmP0VA6EXr2",
+  "audience": "http://your-audience-identifier",
+  "apiUrl": "http://localhost:7000"
+}

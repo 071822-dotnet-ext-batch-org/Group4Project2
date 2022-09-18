@@ -1,0 +1,30 @@
+        <!-- modify the page's markup by adding a check on the User.Identity.IsAuthenticated property
+         this property lets you know if the current user is authenticated or not.
+         If the user is not authenticated, a Login link will be shown
+        The logout link appears when the user is authenticated. The link points to the Logout() method -->
+
+              
+        
+        <a href="">
+                  <h1>Our Book Store</h1>
+              </a>
+
+                <a routerLink="/cart" routerLinkActive="active" style="padding: 10px;"
+                class="button fancy-button">
+                <i class="fas fa-shopping-cart"></i>
+                 Checkout
+                <!-- TODO add item count ({{itemCount()}}) -->
+                </a>
+
+
+<nav>
+ <div class="links">
+    <ul>
+        <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+        <li><app-auth-button></app-auth-button></li>
+        <!-- <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
+        <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">{{ user.name }}</a></li>
+    </ul>
+ </div>        
+
+</nav>

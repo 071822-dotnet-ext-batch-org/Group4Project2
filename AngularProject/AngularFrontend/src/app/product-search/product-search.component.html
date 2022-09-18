@@ -1,4 +1,5 @@
-<div class="search-container">
-  <span>Search:</span>
-  <input type="text" > <!--[{ngModel}]="enteredSearchValue" (input)="onSearchTextChanged()"> -->
-</div>
+
+  <div class="search-container">
+    <span>Search:</span>
+    <input type="text" [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
+  </div>
