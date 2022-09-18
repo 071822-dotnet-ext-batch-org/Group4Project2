@@ -49,12 +49,13 @@ The Ecommerce Web Application that provides the core features present in many co
 
 ## How-to guide 🐣
 
-This application is not containerized in manner like Docker. Follow the guide below to get the application running when you want to try it out.
+This application is not containerized in manner like Docker. There are two options for running the application. Follow the guide below to get the application running when you want to try it out.
 
--   Open both the frontend (angular project) and backend (.net api) and run them via the CLI
+- Option 1)   Open both the frontend (angular project) and backend (.net api) and run them via the CLI
     -   Angular — ng serve open
     -   .Net — dotnet run
--   Once both parts of the app are up and running you should be able to call the frontend using http&#x3A;//localhost:4200 within the browser. The typescript will transpile to Javascript, create Json as needed and use the Saas, Auth0 in order to login to the app, if so desired.
+    -   Once both parts of the app are up and running you should be able to call the frontend using http&#x3A;//localhost:4200 within the browser. The typescript will transpile to Javascript, create Json as needed and use the Saas, Auth0 in order to login to the app, if so desired.
+- Option 2)   The app is deployed by the developers using the Azure service and it may be accessed via the URL: https://ourbooksapi.azurewebsites.net/
 
 ## FAQs 🙋🏽‍♂️
 
