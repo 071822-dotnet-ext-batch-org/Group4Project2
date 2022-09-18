@@ -1,15 +1,15 @@
-<h3>Cart</h3>
+
 <!--
 <p>
   <a routerLink="/shipping">Shipping Prices</a>
 </p>
 -->
 
-<p>
+<!-- <p>
   <a routerLink="/shipping">Shipping Prices</a>
-</p>
-
-<div class="cart-item" *ngFor="let item of items">
+</p> -->
+<!-- First attempt - items work-->
+<!-- <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
   <br>
@@ -25,9 +25,209 @@
       <span>Your cost is: $ {{ money }}</span>
   </script>
 
+</div> -->
+
+<!-- Second Attempt - no total -->
+<div ng-app="myApp">
+  <h2>Shopping Cart </h2>
+  <div ng:controller="CartForm" class="mycontainer">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Total</th>
+        
+        
+        <!-- <th>Include?</th> -->
+      </tr>
+      <tr class="cart-item" *ngFor="let item of items">
+        <td type="text" ng-model="item.name" class="input-small">{{item.name}}</td>
+        <td type="number" ng-model="item.price" ng-required class="input-mini">{{item.price}}</td>
+       
+        
+        <td>{{(item.price | currency)}}</td>
+        <td>
+          <a href ng-click="removeItem(index)"><span class="glyphicon glyphicon-remove" aria-checked="true"></span></a>
+        </td>
+        <!-- <td><input type="checkbox" ng-model="item.checked"></td> -->
+      </tr>
+      <tr class="row-total">
+        <td colspan="4"></td>
+        <td>Total:</td>
+        <td>{{cartTotal}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
+<script>
+  var myApp = angular.module('myApp',[]);
 
+  myApp.controller('CartForm', ['$scope', function($scope) {
+   $scope.invoice = {};
 
+    //  $scope.addItem = function() {
+    //     $scope.invoice.item.push({
+    //         qty: 1,
+    //         name: '',                 
+    //         price: 0,
+    //         checked: true
+    //     });
+    // },
+
+    $scope.removeItem = function(index) {
+        $scope.invoice.item.splice(index, 1);
+    },
+
+    $scope.total = function() {
+        var total = 0;
+        angular.forEach($scope.invoice.item, function(item) {
+          if(item.checked){
+            total += (item.price);
+          }
+            total += 0;
+        })
+        return total;
+    }
+}]);
+</script>
+
+<!--Third attempt-->
+<!-- <table ng-app="ShoppingCart" ng-controller="CartController as ctrl">
+  <tr class="cart_item" ng-repeat="item in ctrl.items" ng-init="total = 0">
+      <td class="product-name" ng-bind="item.name.value"></td>
+      <td class="product-price">
+          <input type="number" ng-model="item.cost" ng-init="item.cost = item.price.value">
+      </td>
+      <td class="product-quantity">
+          <input type="number" ng-model="item.qty" ng-init="item.qty = 1">
+      </td>
+      <td class="product-subtotal">
+          <span>{{item.price * items.qty  | currency: '$'}}</span>
+      </td>
+  </tr>
+
+  <tr class="cart_item">
+      <td class="product-name">TOTAL FOR ALL ITEMS:</td>
+      <td class="product-price"></td>
+      <td class="product-quantity"></td>
+      <td class="product-subtotal">
+          <span class="amount">{{ ctrl.total() | currency: '$' }}</span>
+      </td>
+  </tr>
+</table>
+<script>
+  var app = angular.module("ShoppingCart", []);
+
+  app.controller('CartController', [function() {
+    var ctrl = this;
+
+    ctrl.items = [{
+        name: {
+            value: 'Item #1'
+        },
+        price: {
+            value: 1
+        }
+    }, 
+    {
+        name: {
+            value: 'Item #2'
+        },
+        price: {
+            value: 2
+        }
+    }]
+
+    ctrl.total = function() {
+        return ctrl.items.reduce(function(acc, item) {
+            return acc + (item.price * item.qty);
+        }, 0);
+    }
+}]);
+</script> -->
+
+<!-- Fourth Attempt -->
+<!-- <!DOCTYPE html>  
+  
+<html ng-app="myModule">  
+<head>  
+    <title>Shopping Card</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script type="text/javascript">  
+        var app = angular  
+            .module("myModule", [])  
+            .controller("myController", function ($scope) {  
+                $scope.invoice = {  
+                    items: [{  
+                        qty: 5,  
+                        description: 'Product-1',  
+                        price: 120  
+                    }]  
+                };  
+                $scope.addItem = function () {  
+                    $scope.invoice.items.push({  
+                        qty: 1,  
+                        description: '',  
+                        price: 0  
+                    });  
+                },  
+  
+           $scope.removeItem = function (index) {  
+               $scope.invoice.items.splice(index, 1);
+              },  
+  
+  $scope.total = function () {  
+      var total = 0;  
+      angular.forEach($scope.invoice.items, function (item) {  
+          total += item.qty * item.price;  
+      })  
+
+      return total;  
+  }  
+   });  
+</script>  
+</head>  
+<body ng-controller="myController">  
+<div class="container py-3">  
+<h4 class="text-center text-uppercase">How to calculate Shopping Card in Angular js</h4>  
+<table class="table table-bordered">  
+   <thead class="bg-danger text-white text-upparcase">  
+       <tr>  
+           <th>Product</th>  
+           <th>Quantity</th>  
+           <th>Price</th>  
+           <th>Total</th>  
+           <th></th>  
+       </tr>  
+   </thead>  
+   <tbody>  
+       <tr ng:repeat="item in invoice.items">  
+           <td>  
+            <input type="text" ng:model="item.description" class="form-control">  
+          </td>  
+          <td>  
+              <input type="number" min="1" ng:model="item.qty" ng:required class="form-control">  
+          </td>  
+          <td>  
+              <input type="number" min="1" ng:model="item.cost" ng:required class="form-control">  
+          </td>  
+          <td>{{items.qty * items.price | currency:'$'}}</td>  
+          <td>  
+              <a href ng:click="removeItem($index)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>  
+          </td>  
+      </tr>  
+      <tr>  
+          <td><a href ng:click="addItem()" class="btn btn-sm btn-primary rounded-0">Add Product</a></td>  
+          <td></td>  
+          <td>Total:</td>  
+          <td>{{totalCost() | currency:'$'}}</td>  
+      </tr>  
+  </tbody>  
+</table>  
+</div>   -->
 
 <hr width="100%">
 
@@ -78,3 +278,6 @@
     </div>
   </div>
 </form>
+
+<!-- </body>  
+</html> -->
