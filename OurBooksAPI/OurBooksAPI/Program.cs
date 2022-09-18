@@ -47,6 +47,7 @@ builder.Services.AddAuthentication(options =>
     {
         options.Authority = builder.Configuration["Auth0:Domain"];
         options.Audience = builder.Configuration["Auth0:Audience"];
+        options.RequireHttpsMetadata = false;
     });
 
     builder.Services.AddAuthorization(options =>

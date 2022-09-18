@@ -38,7 +38,7 @@ namespace BusinessLayer
         /// </summary>
         /// <param name="bookName"></param>
         /// <returns></returns>
-        public async Task<List<DisplayDTO>> DisplayAllAsync(string bookName)
+        public async Task<List<DisplayDTO>> DisplayAllAsync()
         {
             List<DisplayDTO> display = await this._repo.DisplayAllAsync(); // Creates display list from repo query
             return display; 

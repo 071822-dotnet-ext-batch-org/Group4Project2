@@ -48,6 +48,10 @@ export class CartComponent implements OnInit {
     //this.items = this.items. ;
   }
 
+  onPayment() {
+    window.alert('Your Payment is processing...');
+  }
+  
   ngOnInit(): void {
   }
 
