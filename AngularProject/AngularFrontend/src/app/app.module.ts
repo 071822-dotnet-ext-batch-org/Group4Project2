@@ -5,6 +5,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from '@auth0/auth0-angular';
+import { ProductSearchComponent } from './product-search/product-search.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,6 +33,7 @@ import { environment as env } from 'src/environments/environment';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
 //import { FluentOrderTrackerModule } from './modules/fluent-order-tracker/fluent-order-tracker.module';
 import { BookListComponent } from './components/book-list/book-list.component';
+
 
 @NgModule({
   declarations: [
@@ -46,15 +51,21 @@ import { BookListComponent } from './components/book-list/book-list.component';
     UserListComponent,
     FilterComponent,
     ShippingComponent,
+<<<<<<< HEAD
     ProductSearchComponent,
     OrdersListComponent,
     BookListComponent,
+=======
+    ProductSearchComponent
+
+>>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
@@ -77,6 +88,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
     }),
     //FluentOrderTrackerModule
   ],
+
 
   providers: [
     {

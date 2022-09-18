@@ -34,4 +34,8 @@ export class ProductListComponent {
   ngOnInit(): void {
 
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e39a28daf09db0c55117901cf6848d951252da8c

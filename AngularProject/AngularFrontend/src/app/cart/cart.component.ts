@@ -24,6 +24,7 @@ export class CartComponent implements OnInit {
 
   items = this.cartService.getItems();
 
+<<<<<<< HEAD
   //counts = this.cartService.itemsCount();
 
   cartTotal: number = 0;
@@ -35,6 +36,15 @@ export class CartComponent implements OnInit {
     private formbuilder: FormBuilder) {
       this.cartService.getTotalCartCost().subscribe(costTotal => this.cartTotal = costTotal);
     }
+=======
+  counts = this.cartService.itemsCount();
+
+
+  constructor(private cartService: CartService,
+    private formbuilder: FormBuilder) { }
+
+
+>>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
   checkoutForm = this.formbuilder.group({
     FirstName: '',
     LastName: '',
@@ -48,6 +58,7 @@ export class CartComponent implements OnInit {
     this.checkoutForm.reset();
   }
 
+<<<<<<< HEAD
   totalCost(): void {
     this.cartService.totalCartCost;
     //this.items = this.items. ;
@@ -61,6 +72,12 @@ export class CartComponent implements OnInit {
   onPayment() {
     window.alert('Your Payment is processing...');
   }
+=======
+  totalCost() {
+    this.counts = this.counts;
+    //this.items = this.items. ;
+  }
+>>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
 
   ngOnInit(): void {
   }

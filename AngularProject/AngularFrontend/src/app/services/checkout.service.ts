@@ -13,9 +13,5 @@ export class CheckoutRequestService {
   //http object injected with apiUrl dependency
   constructor(private http: HttpClient) { }
 
-  // Get request returning title
-  public getTitle(): Observable<ProductInfoDto>
-  { //returns get request of observable
-    return this.http.get<ProductInfoDto>(this.ApiUrl + "/title");
-  }
+
 }

@@ -34,6 +34,7 @@ export class CartService {
     return this.items;
   }
 
+<<<<<<< HEAD
   totalCartCost(costTotal: number){
     this.cartTotal.next(costTotal);
   }
@@ -54,4 +55,6 @@ export class CartService {
     return this.http.get<{ type: string, price: number }[]>('/assets/shipping.json');
   }
 
+=======
+>>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
 }

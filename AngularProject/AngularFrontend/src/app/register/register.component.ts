@@ -1,3 +1,4 @@
+/*
 import { Component, getNgModuleById, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,12 +16,12 @@ export class RegisterComponent implements OnInit {
     submitted = false;
     error!: string;
     CRD! : CustomerRegisterDto;
-    constructor( 
+    constructor(
       private formBuilder: FormBuilder,
       private router: Router,
       private newUserService: NewUserService,
       ) {}
-    
+    /*
     ngOnInit(): void {
       this.registerForm = this.formBuilder.group({
         userId: [''],
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
         this.loading = true;
       }
-      
+
     registerNewUser()
       {console.log(this.registerForm.value);
         this.newUserService.register(this.registerForm.value)
@@ -55,7 +56,7 @@ export class RegisterComponent implements OnInit {
               window.alert("You are now registered.");
               console.log("User is registered.")
         },
-          
+
           error => {
               this.error = error;
               window.alert("You are not registered yet.");
@@ -63,11 +64,6 @@ export class RegisterComponent implements OnInit {
               this.loading = false;
           });
         }
-}
 
-    
-    
-    
-    
-    
-      
+}
+*/
