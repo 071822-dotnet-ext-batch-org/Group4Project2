@@ -81,6 +81,6 @@ These resources were helpful in getting the application running seamlessly:
 -   <https://angular.io/tutorial/>
 -   <https://auth0.com/>
 
-Link to Angular Documentation for the E-Commerceapplication
+Link to Angular Documentation for the E-Commerce application
 
 -   <http://127.0.0.1:5500/AngularProject/AngularFrontend/documentation/index.html>
