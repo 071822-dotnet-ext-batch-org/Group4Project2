@@ -15,6 +15,9 @@ export class ProductSearchComponent implements OnInit {
   currentTitle: any; //Accepts and type
   //constructor(public SS: SearchService) { }
 
+  onNotify() {
+    window.alert('Your payment is processing...');
+  }
 
   ngOnInit(): void {
   }

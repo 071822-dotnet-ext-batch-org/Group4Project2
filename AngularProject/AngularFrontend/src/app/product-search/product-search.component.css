@@ -1,5 +1,7 @@
 .search-container{
   margin: 10px 0px;
+  background-color: black;
+  width: auto;
 }
 
 input[type="text"]{
