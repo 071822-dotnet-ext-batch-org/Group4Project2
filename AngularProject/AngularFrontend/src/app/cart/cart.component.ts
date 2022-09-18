@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵsetCurrentInjector } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { FormBuilder } from '@angular/forms';
+import { ProductInfoDto } from '../Models/ProductInfoDto';
 
 @Component({
   selector: 'app-cart',
@@ -47,16 +48,19 @@ export class CartComponent implements OnInit {
     this.counts = this.counts;
     //this.items = this.items. ;
   }
-
+  //OK
   onPayment() {
     window.alert('Your Payment is processing...');
   }
 
+  //// TODO
   paymentConfirmation(): void{
 
   }
 
+
   ngOnInit(): void {
+
   }
 
 }

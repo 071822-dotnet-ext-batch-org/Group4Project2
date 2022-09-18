@@ -1,6 +1,6 @@
 //Import modules
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ProductSearchService } from '../services/search.service';
+
 
 //Add metadata components
 @Component({
@@ -11,16 +11,12 @@ import { ProductSearchService } from '../services/search.service';
 //Allows class to be exported and used in other modules
 export class ProductSearchComponent implements OnInit {
 
+  constructor() { }
 
-  currentTitle: any; //Accepts and type
-  //constructor(public SS: SearchService) { }
-
-  onNotify() {
-    window.alert('Your payment is processing...');
-  }
 
   ngOnInit(): void {
   }
+
   enteredSearchValue: string = '';
 
   @Output()
@@ -28,7 +24,7 @@ export class ProductSearchComponent implements OnInit {
 
   onSearchTextChanged(){
     this.searchTextChanged.emit(this.enteredSearchValue);
-
   }
+
 
 }

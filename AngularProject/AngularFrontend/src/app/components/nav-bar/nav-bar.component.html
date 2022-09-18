@@ -22,6 +22,6 @@
         <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li>
         <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">{{ user.name }}</a></li>
     </ul>
-    <app-product-search></app-product-search>
+
  </div>
 </nav>
