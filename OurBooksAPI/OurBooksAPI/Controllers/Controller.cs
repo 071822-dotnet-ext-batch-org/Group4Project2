@@ -71,9 +71,9 @@ namespace OurBooksAPI.Controllers
         /// <param name="bookName"></param>
         /// <returns></returns>
         [HttpGet("DisplayAll")] // API Get request
-        public async Task<ActionResult<List<DisplayDTO>>> DisplayAllAsync(string bookName)
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayAllAsync()
         {
-            List<DisplayDTO> result = await this._business.DisplayAllAsync(bookName); //Creates a list from the business layer to send to API
+            List<DisplayDTO> result = await this._business.DisplayAllAsync(); //Creates a list from the business layer to send to API
 
             return Ok(result); // Returns status code 200
         }
@@ -173,9 +173,9 @@ namespace OurBooksAPI.Controllers
         /// <param name="OrderTracker"></param>
         /// <returns></returns>
         [HttpGet("ViewOrderAsync")]
-        public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync(Guid OrderTracker)
+        public async Task<ActionResult<List<ViewOrder>>> ViewOrderAsync()
         {
-            List<ViewOrder> orderList = await this._business.ViewOrderAsync(OrderTracker);
+            List<ViewOrder> orderList = await this._business.ViewOrderAsync();
             return Ok(orderList);
         }
        

@@ -1,0 +1,14 @@
+<div>
+  <h1>View All Books</h1>
+  <ul>
+      <li *ngFor=" let allBooks of allBooks">
+          <h3>{{allBooks.bookName}}</h3>
+          <h4>Author: {{allBooks.author}}</h4>
+          <h4>Cost: {{allBooks.cost}}</h4>
+          <h4>Number of pages: {{allBooks.numberPages}}</h4>
+          <h4>Genre: {{allBooks.genre}}</h4>
+          <h4>Number in stock: {{allBooks.inStock}}</h4>
+          <h4>ISBN: {{allBooks.isbn}}</h4>
+      </li>
+  </ul>
+</div>

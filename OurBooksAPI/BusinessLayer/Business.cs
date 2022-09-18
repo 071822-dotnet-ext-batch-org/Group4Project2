@@ -38,7 +38,7 @@ namespace BusinessLayer
         /// </summary>
         /// <param name="bookName"></param>
         /// <returns></returns>
-        public async Task<List<DisplayDTO>> DisplayAllAsync(string bookName)
+        public async Task<List<DisplayDTO>> DisplayAllAsync()
         {
             List<DisplayDTO> display = await this._repo.DisplayAllAsync(); // Creates display list from repo query
             return display; 
@@ -132,9 +132,9 @@ namespace BusinessLayer
         }//EoDisplayProfileAsync
 
 
-        public async Task<List<ViewOrder>> ViewOrderAsync(Guid OrderTracker)
+        public async Task<List<ViewOrder>> ViewOrderAsync()
         {
-            List<ViewOrder> order = await this._repo.ViewOrderAsync(OrderTracker); // Generates an order list from repo query
+            List<ViewOrder> order = await this._repo.ViewOrderAsync(); // Generates an order list from repo query
             return order;
         }
 
