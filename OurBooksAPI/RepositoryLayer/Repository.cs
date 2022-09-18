@@ -295,8 +295,8 @@ namespace RepositoryLayer
          public async Task<List<ProfileDTO>> DisplayCurrentProfileAsync(string email)
          {
             SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using SqlCommand command = new SqlCommand($"SELECT U.FirstName, U.LastName, U.DeliveryAddress, U.Phone, L.Email FROM Users AS U LEFT JOIN [dbo].[Login] AS L ON U.Email = L.Email;", conn);
-            command.Parameters.AddWithValue("L.Email", email);
+            using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM Users WHERE Email=@Email;", conn);
+            command.Parameters.AddWithValue("@Email", email);
             conn.Open();
             SqlDataReader? ret = await command.ExecuteReaderAsync();
             List<ProfileDTO> rtnList = new List<ProfileDTO>();

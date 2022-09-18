@@ -144,7 +144,7 @@ namespace OurBooksAPI.Controllers
 
 
         [HttpGet("Login")]//Check the credentials
-        public async Task <ActionResult> LoginAsync(Credentials Login)//Member data transfer object to carry login credentials data between processes.
+        public async Task <ActionResult> LoginAsync([FromQuery]Credentials Login)//Member data transfer object to carry login credentials data between processes.
         {
          if (ModelState.IsValid)//Model Validation: was it possible to bind incoming values to MemberDTO?
             {
@@ -156,7 +156,7 @@ namespace OurBooksAPI.Controllers
             }
         }//EoLoginAsync
         [HttpGet("Profile")]//Retrieve the member profile
-        public async Task<ActionResult<List<ProfileDTO>>> DisplayProfileAsync([FromQuery]Credentials Profile)//Member profile data
+        public async Task<ActionResult<List<ProfileDTO>>> DisplayProfileAsync([FromQuery]CredentialsDTO Profile)//Member profile data
         {
             if (ModelState.IsValid)
             {
