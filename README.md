@@ -1,9 +1,6 @@
 
-title: Software documentation for Ecommerce App
 
----
-
-# Software documentation for Ecommerce App
+# Software Documentation for Ecommerce App
 
 > **Software Name:** e-Commerce App: OurBooks  
 > **Version:** When applicable
@@ -37,11 +34,10 @@ The Ecommerce Web Application that provides the core features present in many co
 
 -   Users are able to purchase their items
 -   Users see confirmation on the webpage and not just the console
-    -   Need to be able to update database on backend
 
 6.  View Previous Orders
 
-    -   Need to be able to see previous orders
+-  Authenticated Admins can see orders
 
 7.  User Profile
 
