@@ -59,6 +59,10 @@ export class CartComponent implements OnInit {
   }
 
 
+  onPayment() {
+    window.alert('Your Payment is processing...');
+  }
+  
   ngOnInit(): void {
 
   }

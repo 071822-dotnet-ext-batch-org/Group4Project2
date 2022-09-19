@@ -71,9 +71,9 @@ namespace OurBooksAPI.Controllers
         /// <param name="bookName"></param>
         /// <returns></returns>
         [HttpGet("DisplayAll")] // API Get request
-        public async Task<ActionResult<List<DisplayDTO>>> DisplayAllAsync(string bookName)
+        public async Task<ActionResult<List<DisplayDTO>>> DisplayAllAsync()
         {
-            List<DisplayDTO> result = await this._business.DisplayAllAsync(bookName); //Creates a list from the business layer to send to API
+            List<DisplayDTO> result = await this._business.DisplayAllAsync(); //Creates a list from the business layer to send to API
 
             return Ok(result); // Returns status code 200
         }

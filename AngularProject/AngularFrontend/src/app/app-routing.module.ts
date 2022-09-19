@@ -8,6 +8,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'components/auth-button', component:AuthButtonComponent
   },
+
+  {
+    path: 'allbooks', component: BookListComponent,
+  }
+  
 
   //{
   //  path:'filter', component:FilterComponent

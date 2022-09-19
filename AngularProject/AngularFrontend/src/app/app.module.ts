@@ -26,6 +26,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment as env } from 'src/environments/environment';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { environment as env } from 'src/environments/environment';
     UserListComponent,
     FilterComponent,
     ShippingComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    BookListComponent,
 
   ],
 

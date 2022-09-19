@@ -4,6 +4,7 @@
 
 </head>
 <body>
+
   <div>
     <app-product-search (searchTextChanged)="onSearchTextEntered($event)"></app-product-search>
   </div>
@@ -11,6 +12,7 @@
     <ng-container *ngfor= "let book of books">
     <div class="book-container" *ngIf="searchText === '' || book.name.toLower().includes(searchText)"> -->
   <img src="Screen Shot 2022-09-17 at 3.00.58 PM.png" alt="Used Books" width="500" height="600">
+
 
   <h1><b>Our Featured Books of the Month!</b></h1>
   <div *ngFor="let product of products">
@@ -37,5 +39,6 @@
 <!--  Added for search
   </div>
 </ng-container> -->
+
 </body>
 </html>
