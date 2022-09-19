@@ -8,12 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookServiceService {
 
-
   constructor(private http: HttpClient) { }
     private rootUrl = 'https://localhost:7010';
 
   public getAllBooks(): Observable<AllBooks[]>{
     return this.http.get<AllBooks[]>(this.rootUrl + '/DisplayAll');
   }
-
 }

@@ -1,18 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Product } from '../products';
-import { Observable, Subject } from 'rxjs'
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class CartService {
 
   private ourBookUrl = 'http://localhost:5010/DisplayAll?';
+
 
   items: Product[] = [];
   constructor(
     private http:HttpClient
   ) { }
+  public cartTotal: Subject<number> = new Subject<number>();
+  public cartBooks: Subject<number> = new Subject<number>();
 
   private cartTotal: Subject<number> = new Subject<number>();
   private cartBooks: Subject<number> = new Subject<number>();
@@ -34,7 +39,6 @@ export class CartService {
     return this.items;
   }
 
-<<<<<<< HEAD
   totalCartCost(costTotal: number){
     this.cartTotal.next(costTotal);
   }
@@ -51,10 +55,4 @@ export class CartService {
     return this.cartBooks.asObservable();
   }
 
-  getShippingPrices() {
-    return this.http.get<{ type: string, price: number }[]>('/assets/shipping.json');
-  }
-
-=======
->>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
 }

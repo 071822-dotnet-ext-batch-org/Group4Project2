@@ -6,5 +6,4 @@ export interface AllBooks {
   author: string;
   inStock: number;
   cost: number;
-
 }

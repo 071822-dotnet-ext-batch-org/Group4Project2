@@ -4,26 +4,21 @@
 
 </head>
 <body>
-<<<<<<< HEAD
 
-
-
-  <h1><b>Our Featured Books of the Month!</b></h1>
-=======
->>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
-
+  <!-- <div>
+    <app-product-search (searchTextChanged)="onSearchTextEntered($event)"></app-product-search>
+  </div> -->
+    <!--  Added for search
+    <ng-container *ngfor= "let book of books">
+    <div class="book-container" *ngIf="searchText === '' || book.name.toLower().includes(searchText)"> -->
   <img src="Screen Shot 2022-09-17 at 3.00.58 PM.png" alt="Used Books" width="500" height="600">
-  
+
+
   <h1><b>Our Featured Books of the Month!</b></h1>
-  
   <div *ngFor="let product of products">
 
     <h3>
-<<<<<<< HEAD
       <a
-=======
-      <a 
->>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
       [title] ="product.name + ' details'"
       [routerLink]="['/products', product.isbn]">
       {{ product.name }}
@@ -40,10 +35,10 @@
       </app-product-alerts>
 
   </div>
-<<<<<<< HEAD
 
-=======
-  <img src="Screen Shot 2022-09-17 at 3.00.58 PM.png" alt="Used Books" width="500" height="600">
->>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
+<!--  Added for search
+  </div>
+</ng-container> -->
+
 </body>
 </html>
