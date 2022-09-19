@@ -27,6 +27,18 @@ LastName NVARCHAR(25) NOT NULL,
 DeliveryAddress NVARCHAR(75) NOT NULL,
 OrderTracker UNIQUEIDENTIFIER NOT NULL);
 
+CREATE TABLE Card(
+UserId UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
+CardNumber BIGINT NOT NULL,
+CVV INT NOT NULL,
+ValidThru NVARCHAR(5) NOT NULL);
+
+ALTER TABLE [dbo].[Card]
+ADD CVV INT;
+
+ALTER TABLE [dbo].[Card]
+ADD ValidThru NVARCHAR(5);
+
 CREATE TABLE Login (
 Email NVARCHAR(25) PRIMARY KEY,
 Password NVARCHAR(25) NOT NULL);
@@ -75,3 +87,34 @@ INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStoc
 INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-3319188712', 'A Guide to Hubble Space Telescope Objects', 262, 'Education', 'James Chen and Adam Chen', 6, 21.99);
 INSERT INTO [dbo].[Products] (ISBN, BookName, NumberPages, Genre, Author, inStock, Cost) VALUES('978-0345535528', 'Game of Thrones box set', 5216, 'Fantasy', 'George R. R. Martin', 11, 36.99);
 
+INSERT INTO MasterTable (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, Password, isUser, isAdmin, CardNumber, ValidThru, CVV, CartId, Amount, OrderId, Cost, OrderTracker, ISBN, BookName, NumberPages, Genre, Author, inStock) VALUES('24975d52-c43f-4b81-a98e-8504ccae5c28', 'Jay', 'James', '9 Lincoln ave Boston, MA 14025', '1-508-666-4237', 'JJames@myEmail.com', 
+'78901', 'Yes', 'Yes', 7890123456789012, '01/23', 456, '07af6e9b-79e6-4053-844a-3ddcedaea18e', 99.99, '07af6e9b-79e6-4053-844a-3ddcedaea18e', 99.99, '28bc9a12-ea48-4593-8e42-c355bd0079eb', '978-0914098911', 'Calcus, 4th Edition', 680, 'Education', 'Michael Spivak', 99);
+INSERT INTO [dbo].[MasterTable] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, Password, isUser, isAdmin, CardNumber, ValidThru, CVV, CartId, Amount, OrderId, Cost, OrderTracker, ISBN, BookName, NumberPages, Genre, Author, inStock) VALUES('91a5d36c-5b70-409b-9bbb-6cddccbd6433', 'Jane', 'Smith', '123 4th ave New York, NY 10002', '1-321-123-4567', 'JSmith@myEmail.com',
+'12345', 'Yes', 'No', 6789012345678901, '3/24', 123, '0391a76a-b538-40e6-9b90-e34f4881a95a', 36.99, '0391a76a-b538-40e6-9b90-e34f4881a95a', 36.99, 'd9493ca9-232a-4711-ace0-05fb2a972bd0' , '978-0345535528', 'Game of Thrones box set', 5216, 'Fantasy', 'George R. R. Martin', 11);
+INSERT INTO [dbo].[MasterTable] (UserId, FirstName, LastName, DeliveryAddress, Phone, Email, Password, isUser, isAdmin, CardNumber, ValidThru, CVV, CartId, Amount, OrderId, Cost, OrderTracker, ISBN, BookName, NumberPages, Genre, Author, inStock) VALUES('bfb9bec7-89ce-4ede-aa39-176890422c76', 'Erica', 'Williams', '4 Right ln Houston, TX 177493', '1-214-778-4227', 'EWilliams@myEmail.com',
+'12345', 'no', 'no', 4567890123456789, '04/25', 876, '1e837b9a-0458-4043-875a-c5f74919b1fa', 19.99, '1e837b9a-0458-4043-875a-c5f74919b1fa', 19.99, '763b4a10-ce81-48f9-8cce-2734fcc15fb2','978-0547928227', 'The Hobbit', 300, 'Fantasy', 'J. R. R. Tolkien', 1);
+
+CREATE TABLE MasterTable (
+UserId UNIQUEIDENTIFIER Primary Key NOT NULL,
+FirstName NVARCHAR(25) NOT NULL,
+LastName NVARCHAR(25) NOT NULL,
+DeliveryAddress NVARCHAR(75),
+Phone NVARCHAR(15) NOT NULL,
+Email NVARCHAR(50) NOT NULL,
+Password NVARCHAR(25) NOT NULL,
+isUser NVARCHAR(3) NOT NULL,
+isAdmin NVARCHAR(3) NOT NULL,
+CardNumber BIGINT NOT NULL,
+ValidThru NVARCHAR(5) NOT NULL,
+CVV INT NOT NULL,
+CartId UNIQUEIDENTIFIER NOT NULL,
+Amount Money NOT NULL,
+OrderId UNIQUEIDENTIFIER NOT NULL,
+Cost Money NOT NULL,
+OrderTracker UNIQUEIDENTIFIER NOT NULL,
+ISBN NVARCHAR(15) NOT NULL,
+BookName NVARCHAR(75) NOT NULL,
+NumberPages INT NOT NULL,
+Genre NVARCHAR(75) NOT NULL,
+Author NVARCHAR(50) NOT NULL,
+inStock int NOT NULL);
