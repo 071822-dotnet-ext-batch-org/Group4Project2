@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵsetCurrentInjector } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { FormBuilder } from '@angular/forms';
+import { Product } from '../products';
 
 import { Product } from '../products';
 
@@ -31,8 +32,8 @@ export class CartComponent implements OnInit {
   // products: Product[] = [];
   cartTotal = 114.98;
 
+  //counts = this.cartService.itemsCount();
   // total = this.cartService.Total()
-  
   
 
 
@@ -81,8 +82,6 @@ export class CartComponent implements OnInit {
   // total(){
   //   this.BookItems.price * this.BookItems.price
   // }
-
-  
 
   ngOnInit(): void {
 

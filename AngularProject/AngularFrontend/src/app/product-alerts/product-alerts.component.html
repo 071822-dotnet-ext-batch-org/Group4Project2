@@ -1,4 +1,33 @@
 <head>
+<<<<<<< HEAD
+  <style>
+     .button {
+      border: none;
+      color: rgb(154, 137, 11);
+      padding: 5px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+
+      cursor: pointer;
+    }
+    .button:hover {
+    background-color: #2b8f2e;
+    color: white;
+  }
+    </style>
+  </head>
+
+  <body>
+    <p *ngIf="product && product.inStock == 0">
+      <button class="button" type="button" (click)="notify.emit()">Notify Me When Back in Stock</button>
+    </p>
+
+  </body>
+=======
 <style>
    .button {
     border: none;
@@ -27,3 +56,4 @@
   
 </body>
 
+>>>>>>> e39a28daf09db0c55117901cf6848d951252da8c

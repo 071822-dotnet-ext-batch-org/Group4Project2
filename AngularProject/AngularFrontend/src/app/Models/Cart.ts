@@ -1,4 +1,4 @@
 export interface Cart{
-    cartBooks: number;
-    cartTotal: number;
-  }
+  cartBooks: number;
+  cartTotal: number;
+}

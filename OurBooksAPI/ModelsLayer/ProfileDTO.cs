@@ -17,7 +17,7 @@ namespace ModelsLayer
             Phone = phone;
         }
 
-        public ProfileDTO() {}
+        // public ProfileDTO() {}
 
         // Properties for constructors
         public string FirstName { get; set; }

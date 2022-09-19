@@ -5,3 +5,4 @@ export interface Checkout {
     products: Product[];
     cart: Cart;
 }
+

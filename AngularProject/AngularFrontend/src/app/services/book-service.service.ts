@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BookServiceService {
- 
 
   constructor(private http: HttpClient) { }
     private rootUrl = 'https://localhost:7010';
@@ -15,5 +14,4 @@ export class BookServiceService {
   public getAllBooks(): Observable<AllBooks[]>{
     return this.http.get<AllBooks[]>(this.rootUrl + '/DisplayAll');
   }
-  
 }

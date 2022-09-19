@@ -19,6 +19,9 @@ export class CartService {
   public cartTotal: Subject<number> = new Subject<number>();
   public cartBooks: Subject<number> = new Subject<number>();
 
+  private cartTotal: Subject<number> = new Subject<number>();
+  private cartBooks: Subject<number> = new Subject<number>();
+
   addToCart(product: Product) {
     this.items.push(product);
   }
@@ -51,7 +54,5 @@ export class CartService {
   getUpdatedCart(): Observable<number>{
     return this.cartBooks.asObservable();
   }
-  
-  
 
 }

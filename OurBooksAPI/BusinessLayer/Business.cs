@@ -110,11 +110,11 @@ namespace BusinessLayer
         // }
 
 
-        private Credentials? _CurrentCredentials = null;
+        private Credentials _CurrentCredentials = null;
 
         public async Task<bool> LoginAsync(string email, string password)
         {
-            Credentials? c = await this._repo.GetCredentialsAsync(email, password);
+            Credentials c = await this._repo.GetCredentialsAsync(email, password);
             if (c != null && c.Email == email && c.Password == password) //If useer is in directory with this email and password
             {
                 _CurrentCredentials = c;
@@ -127,17 +127,21 @@ namespace BusinessLayer
 
         public async Task<List<ProfileDTO>> DisplayProfileAsync(string email)
         {
-            List<ProfileDTO> profile = await this._repo.DisplayCurrentProfileAsync(email);//Returns profile from repo
-            return profile;
+            //Returns profile from repo
+            return await this._repo.DisplayCurrentProfileAsync(email);
         }//EoDisplayProfileAsync
 
 
-        public async Task<List<ViewOrder>> ViewOrderAsync(Guid OrderTracker)
+        public async Task<List<ViewOrder>> ViewOrderAsync()
         {
-            List<ViewOrder> order = await this._repo.ViewOrderAsync(OrderTracker); // Generates an order list from repo query
+            List<ViewOrder> order = await this._repo.ViewOrderAsync(); // Generates an order list from repo query
             return order;
         }
 
-
+        public override bool Equals(object? obj)
+        {
+            return obj is Business business &&
+                   EqualityComparer<Credentials>.Default.Equals(_CurrentCredentials, business._CurrentCredentials);
+        }
     }//EoC
 }//EoN

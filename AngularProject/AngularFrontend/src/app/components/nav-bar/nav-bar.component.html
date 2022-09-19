@@ -3,6 +3,15 @@
          If the user is not authenticated, a Login link will be shown
         The logout link appears when the user is authenticated. The link points to the Logout() method -->
 
+        <a href="">
+          <h1>Our Book Store</h1>
+      </a>
+        <a routerLink="/cart" routerLinkActive="active" style="padding: 10px;"
+        class="button fancy-button">
+        <i class="fas fa-shopping-cart"></i>
+         Checkout
+        <!-- TODO add item count ({{itemCount()}}) -->
+        </a>
      
         <a href="">
                   <h1>Our Book Store</h1>
@@ -23,18 +32,15 @@
   </a>
 
 <nav>
- <div class="links">
+  <div class="links">
     <ul>
-        <li><a routerLink="/" routerLinkActive="active">Home</a></li>
-
-        <li><app-auth-button></app-auth-button></li>
-       <!-- <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
-
-
-        <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">{{ user.name }}</a></li>
-        <li><a routerLink="/allbooks" routerLinkActive="active">View All Books</a></li>
-
+      <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+      <li><app-auth-button></app-auth-button></li>
+      <!-- <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Profile</a></li> -->
+      <li><a routerLink="/profile" routerLinkActive="active" *ngIf="auth.user$ | async as user">Welcome back, {{ user.name }}</a></li>
+      <li><a routerLink="/allbooks" routerLinkActive="active">View All Books</a></li>
+      <li><a routerLink="/orders" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async)">Admin Orders List</a></li>
     </ul>
-
+  </div>
  </div>
 </nav>

@@ -26,7 +26,10 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment as env } from 'src/environments/environment';
+import { OrdersListComponent } from './components/orders-list/orders-list.component';
+//import { FluentOrderTrackerModule } from './modules/fluent-order-tracker/fluent-order-tracker.module';
 import { BookListComponent } from './components/book-list/book-list.component';
+
 
 @NgModule({
   declarations: [
@@ -45,8 +48,8 @@ import { BookListComponent } from './components/book-list/book-list.component';
     FilterComponent,
     ShippingComponent,
     ProductSearchComponent,
+    OrdersListComponent,
     BookListComponent,
-
   ],
 
   imports: [
@@ -74,6 +77,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
     //     allowedList: ['https://localhost:7010/'],
     //  }
     }),
+    //FluentOrderTrackerModule
   ],
 
 
