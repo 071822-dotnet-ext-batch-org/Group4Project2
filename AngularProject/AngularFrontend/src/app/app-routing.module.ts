@@ -9,7 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { BookListComponent } from './components/book-list/book-list.component';
-
+import { OrdersListComponent } from './components/orders-list/orders-list.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,9 @@ const routes: Routes = [
     path:'profile', component:ProfileComponent,
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'orders', component: OrdersListComponent
+  },
   {
     path:'components/user-list', component:UserListComponent,
     canActivate: [AuthGuard]
@@ -42,7 +44,7 @@ const routes: Routes = [
   {
     path: 'allbooks', component: BookListComponent,
   }
-  
+
 
   //{
   //  path:'filter', component:FilterComponent

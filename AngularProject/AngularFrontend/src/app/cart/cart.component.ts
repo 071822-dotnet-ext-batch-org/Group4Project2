@@ -3,7 +3,7 @@ import { CartService } from '../services/cart.service';
 import { FormBuilder } from '@angular/forms';
 import { Product } from '../products';
 
-import { Product } from '../products';
+
 
 
 @Component({
@@ -27,19 +27,19 @@ import { Product } from '../products';
 export class CartComponent implements OnInit {
 
 
-  
+
   items = this.cartService.getItems();
   // products: Product[] = [];
-  cartTotal = 114.98;
+  cartTotal = 99.99;
 
   //counts = this.cartService.itemsCount();
   // total = this.cartService.Total()
-  
+
 
 
   constructor(private cartService: CartService,
     private formbuilder: FormBuilder) {}
-// this.cartService.getTotalCartCost().subscribe(costTotal => this.cartTotal = costTotal); 
+// this.cartService.getTotalCartCost().subscribe(costTotal => this.cartTotal = costTotal);
 
   checkoutForm = this.formbuilder.group({
     FirstName: '',
@@ -60,7 +60,7 @@ export class CartComponent implements OnInit {
   }
   //OK
   onPayment() {
-    window.alert('Your Payment is processing...');
+    window.alert('Your order has been submitted!');
   }
 
   //// TODO
@@ -68,16 +68,11 @@ export class CartComponent implements OnInit {
 
   }
 
-
   // checkoutCart(): void {
   //   this.cartTotal = 0;
   //   this.products = [];
   //   this.cartService.updateCart(0);
   // }
-
-  onPayment() {
-    window.alert('Your Payment is processing...');
-  }
 
   // total(){
   //   this.BookItems.price * this.BookItems.price
@@ -88,5 +83,3 @@ export class CartComponent implements OnInit {
   }
 
 }
-
-

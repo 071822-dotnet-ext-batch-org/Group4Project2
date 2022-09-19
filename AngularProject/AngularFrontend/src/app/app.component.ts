@@ -1,18 +1,11 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 // import { OrderEntity } from './Models/order-entity';
 // import { OrderState } from './Models/order-state.enum';
 // import { OrderStateTextUtil } from './util/order-state-text.enum';
-
-// import { BrowserModule } from '@angular/platform-browser';
-// import { NgModule } from '@angular/core';
-// import { HttpClientModule} from '@angular/common/http';
-=======
-import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
->>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
+
 
 
  @NgModule({
@@ -34,7 +27,7 @@ export class AppComponent implements OnInit{
   //orderEntities: Array<OrderEntity> = [];
 
   title = 'OurBooks';
-<<<<<<< HEAD
+
   ngOnInit(this: any): void {
     //this.initOrderEntities();
   }
@@ -66,6 +59,4 @@ export class AppComponent implements OnInit{
   //   this.orderEntities.push(orderEntityDelivered);
 
   // }
-=======
->>>>>>> e39a28daf09db0c55117901cf6848d951252da8c
 }

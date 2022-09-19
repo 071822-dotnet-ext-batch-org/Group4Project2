@@ -10,14 +10,14 @@ export class OrderServiceService {
 
 
   constructor(private http: HttpClient) { }
-    private rootUrl = 'https://localhost:7010';
+    private rootUrl2 = 'https://localhost:7010';
 
   public getOrders(): Observable<Orders[]>{
-    return this.http.get<Orders[]>(this.rootUrl + '/ViewOrderAsync');
+    return this.http.get<Orders[]>(this.rootUrl2 + '/ViewOrderAsync');
   }
 
-  public getOrderTracker(orderTracker: string): Observable<Orders> {
-    return this.http.get<Orders>(this.rootUrl + '/ViewOrderAsync');
-  }
+  // public getOrderTracker(orderTracker: string): Observable<Orders> {
+  //   return this.http.get<Orders>(this.rootUrl + '/ViewOrderAsync');
+  // }
 
 }

@@ -1,8 +1,10 @@
+
 export interface Orders {
-  firstName: string;
+  orderId: number,
+  bookName: string,
+  cost: number,
+  firstName: string,
   lastName: string;
   deliveryAddress: string;
-  bookName: string;
-  cost: number;
-  orderTracker: string;
+  orderTracker: number;
 }

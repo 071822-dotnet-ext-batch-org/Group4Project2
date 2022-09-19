@@ -10,26 +10,16 @@ import { FormControl,FormGroup } from '@angular/forms';
 })
 export class OrdersListComponent implements OnInit {
 
-  Orders!: any;
-  orderTracker!: any;
-  bookName!: any;
-  getOrderTracker: any;
-
+  orders?: Orders[] = [];
   constructor(private OSService: OrderServiceService) {}
 
   ngOnInit(): void {
-    this.displayOrders()
+    this.getOrders()
   }
-    displayOrders(): void {
+    getOrders(): void {
       //get request
       this.OSService.getOrders()
-      .subscribe((data: any) => {this.Orders=data;});
+      .subscribe(orders => {this.orders = orders;});
     }
 
-    displayOrder(orderTracker: any): void {
-      this.OSService = this.getOrderTracker(orderTracker).subscribe((data: any) => {
-        this.bookName = data;
-          console.log(this.bookName);
-    })
-  }
 }
