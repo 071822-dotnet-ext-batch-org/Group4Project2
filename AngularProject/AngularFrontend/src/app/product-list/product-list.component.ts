@@ -3,11 +3,13 @@ import { products } from '../products';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 
 export class ProductListComponent {
 
@@ -26,7 +28,7 @@ export class ProductListComponent {
 
   searchText: string = '';
 
-  onSearchTextEntered(searchValue: string){
+  onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
     console.log(this.searchText);
   }

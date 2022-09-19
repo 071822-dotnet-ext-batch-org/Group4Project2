@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc": "npx compodoc -p tsconfig.app.json"
   },
   "private": true,
   "dependencies": {
@@ -25,8 +26,11 @@
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.0",
+    "guid-typescript": "^1.0.9",
+    "ng-fluent-order-tracker": "^1.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "typescript-guid": "^1.0.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 <head>
-<style>
-   .button {
+  <style>
+    .button {
     border: none;
     color: rgb(154, 137, 11);
     padding: 5px 15px;
@@ -10,13 +10,13 @@
     font-size: 14px;
     margin: 4px 2px;
     transition-duration: 0.4s;
-    
+
     cursor: pointer;
+    }
+    .button:hover {
+    background-color: #2b8f2e;
+    color: white;
   }
-  .button:hover {
-  background-color: #2b8f2e;
-  color: white;
-}
   </style>
 </head>
 
@@ -24,6 +24,4 @@
   <p *ngIf="product && product.inStock == 0">
     <button class="button" type="button" (click)="notify.emit()">Notify Me When Back in Stock</button>
   </p>
-  
 </body>
-

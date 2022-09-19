@@ -1,0 +1,14 @@
+<div>
+  <h1>View All Orders</h1>
+  <ul>
+      <li *ngFor=" let orders of orders">
+          <h3>{{orders.orderId}}</h3>
+          <h4>Book Name: {{orders.bookName}};</h4>
+          <h4>Total Cost: {{orders.cost}}</h4>
+          <h4>First Name: {{orders.firstName}}</h4>
+          <h4>Last Name: {{orders.lastName}}</h4>
+          <h4>Delivery Address: {{orders.deliveryAddress}}</h4>
+          <h4>Order Tracker: {{orders.orderTracker}}</h4>
+      </li>
+  </ul>
+</div>

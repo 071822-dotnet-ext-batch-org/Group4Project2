@@ -17,6 +17,7 @@
     ],
     "meta-viewport": "off",
     "meta-charset-utf-8": "off",
-    "axe/text-alternatives": "off"
+    "axe/text-alternatives": "off",
+    "button-type": "off"
   }
 }

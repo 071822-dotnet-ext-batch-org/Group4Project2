@@ -9,7 +9,7 @@ namespace ModelsLayer
 {
     public class ViewOrder
     {
-        public ViewOrder(Guid orderId, string bookName, decimal cost, string firstName, string lastName, string deliveryAddress, Guid orderTracker)
+        public ViewOrder(int orderId, string bookName, decimal cost, string firstName, string lastName, string deliveryAddress, int orderTracker)
         {
             OrderId = orderId;
             BookName = bookName;
@@ -20,13 +20,13 @@ namespace ModelsLayer
             OrderTracker = orderTracker;
         }
 
-        public Guid OrderId { get; set; }
+        public int OrderId { get; set; }
         public string BookName { get; set; }
         public decimal Cost { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string DeliveryAddress { get; set; }
-        public Guid OrderTracker { get; set; }
+        public int OrderTracker { get; set; }
 
     }
 }

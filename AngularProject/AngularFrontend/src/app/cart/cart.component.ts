@@ -1,34 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵsetCurrentInjector } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { FormBuilder } from '@angular/forms';
+import { Product } from '../products';
+
+
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  template:`
-  <table>
-    <thread>
-      <th>name</th>
-      <th>price</th>
-    </thread>
-    <tbody>
-      <tr *ngFor="let cost of app-cart">
-        <td>{{cost.price}}</td>
-      </tr>
-    </tbody>
-  <table>`
+  // template:`
+  // <table>
+  //   <thread>
+  //     <th>name</th>
+  //     <th>price</th>
+  //     <!-- <th>qty</th> -->
+  //   </thread>
+  //   <tbody>
+  //     <tr *ngFor="let cost of app-cart">
+  //       <td>{{items.price}}</td>
+  //     </tr>
+  //   </tbody>
+  // <table>`
 })
 export class CartComponent implements OnInit {
 
-  items = this.cartService.getItems();
 
-  counts = this.cartService.itemsCount();
+
+  items = this.cartService.getItems();
+  // products: Product[] = [];
+  cartTotal = 99.99;
+
+  //counts = this.cartService.itemsCount();
+  // total = this.cartService.Total()
+
 
 
   constructor(private cartService: CartService,
-    private formbuilder: FormBuilder) { }
-
+    private formbuilder: FormBuilder) {}
+// this.cartService.getTotalCartCost().subscribe(costTotal => this.cartTotal = costTotal);
 
   checkoutForm = this.formbuilder.group({
     FirstName: '',
@@ -43,12 +54,32 @@ export class CartComponent implements OnInit {
     this.checkoutForm.reset();
   }
 
-  totalCost() {
-    this.counts = this.counts;
+  totalCost(): void {
+    this.cartService.totalCartCost;
     //this.items = this.items. ;
   }
+  //OK
+  onPayment() {
+    window.alert('Your order has been submitted!');
+  }
+
+  //// TODO
+  paymentConfirmation(): void{
+
+  }
+
+  // checkoutCart(): void {
+  //   this.cartTotal = 0;
+  //   this.products = [];
+  //   this.cartService.updateCart(0);
+  // }
+
+  // total(){
+  //   this.BookItems.price * this.BookItems.price
+  // }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -34,7 +34,7 @@ namespace RepositoryLayer
             }
         }
 
-        //To insert the unique new customer into the database 
+        //To insert the unique new customer into the database
         public async Task<NewCustomer> InsertNewCustomer(Guid id, CustomerRegisterDto nc)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -61,7 +61,7 @@ namespace RepositoryLayer
             }
         }
 
-        //To query only new customers based on the unique guid id 
+        //To query only new customers based on the unique guid id
         private async Task<NewCustomer> CustomerById(Guid id)
         {
             SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -134,7 +134,7 @@ namespace RepositoryLayer
         }
 
         /// <summary>
-        /// #3 Display Books by genre 
+        /// #3 Display Books by genre
         /// </summary>
         /// <param name="genre"></param>
         /// <returns></returns>
@@ -266,7 +266,7 @@ namespace RepositoryLayer
         public object c { get; set;}
 
         private static readonly SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        
+
         public async Task <Credentials> GetCredentialsAsync(string email, string password)
         {
             SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -295,8 +295,8 @@ namespace RepositoryLayer
          public async Task<List<ProfileDTO>> DisplayCurrentProfileAsync(string email)
          {
             SqlConnection conn = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM Users LEFT JOIN Login ON Email = @email", conn);
-            command.Parameters.AddWithValue("@email", email);
+            using SqlCommand command = new SqlCommand($"SELECT FirstName, LastName, DeliveryAddress, Phone, Email FROM MasterTable WHERE Email=@Email;", conn);
+            command.Parameters.AddWithValue("@Email", email);
             conn.Open();
             SqlDataReader? ret = await command.ExecuteReaderAsync();
             List<ProfileDTO> rtnList = new List<ProfileDTO>();
@@ -310,21 +310,20 @@ namespace RepositoryLayer
          }//EoDisplayProfileAsync
 
 
-  
+
 
         //To query the orders table to return order information using the Guid orderTracker
-        public async Task<List<ViewOrder>> ViewOrderAsync(Guid OrderTracker)
+        public async Task<List<ViewOrder>> ViewOrderAsync()
         {
             SqlConnection connect = new SqlConnection("Server=tcp:proj2.database.windows.net,1433;Initial Catalog=Project2_DB;Persist Security Info=False;User ID=Project2User;Password=Group4usesmac;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            using (SqlCommand command = new SqlCommand($"SELECT * FROM Orders WHERE OrderTracker = @OrderTracker", connect))
+            using (SqlCommand command = new SqlCommand($"SELECT * FROM Orders", connect))
             {
-                command.Parameters.AddWithValue("@OrderTracker", OrderTracker);// add dynamic data like this to protect against SQL Injection.
                 connect.Open();
                 SqlDataReader? ret = await command.ExecuteReaderAsync();
                 List<ViewOrder> rList = new List<ViewOrder>();
                 while (ret.Read())
                 {
-                    ViewOrder r = new ViewOrder(ret.GetGuid(0), ret.GetString(1), ret.GetDecimal(2), ret.GetString(3), ret.GetString(4), ret.GetString(5), ret.GetGuid(6));
+                    ViewOrder r = new ViewOrder(ret.GetInt32(0), ret.GetString(1), ret.GetDecimal(2), ret.GetString(3), ret.GetString(4), ret.GetString(5), ret.GetInt32(6));
                     rList.Add(r);
                 }
                 connect.Close();
@@ -333,6 +332,6 @@ namespace RepositoryLayer
         }
 
 
-     
+
     }//EoC
 }//EoN
