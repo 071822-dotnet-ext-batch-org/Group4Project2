@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 
+
 const routes: Routes = [
   {
     path:'', component:ProductListComponent
