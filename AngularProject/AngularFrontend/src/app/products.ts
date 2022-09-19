@@ -8,6 +8,7 @@ export interface Product{
     genre: string;
     description: string;
     price: number;
+    photo?: string;
 }
 
 export const products = [
@@ -19,6 +20,7 @@ export const products = [
         genre: "Fantasy",
         description: "Follows the quest of home-loving Bilbo Baggins, the titular hobbit, to win a share of the treasure guarded by a dragon named Smaug",
         price: 19.99,
+        photo: "https://images-na.ssl-images-amazon.com/images/I/51phEoA5C9L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg"
     },
     {
         isbn: "978-0316347006",
@@ -28,6 +30,7 @@ export const products = [
         genre: "Fantasy",
         description: "Follows the adventures of a young Viking named Hiccup Horrendous Haddock III (voiced by Jay Baruchel), son of Stoick the Vast, leader of the Viking island of Berk.",
         price: 39.99,
+        photo: "https://images-na.ssl-images-amazon.com/images/I/51hDe6uQ38L._SY423_BO1,204,203,200_.jpg"
     },
     {
         isbn: "978-1783127856",
@@ -37,6 +40,7 @@ export const products = [
         genre: "Non-Fiction",
         description: "Covers prehistoric life from the very first vertebrates to the world's mightiest dinosaurs.",
         price: 14.99,
+        photo: "https://images-na.ssl-images-amazon.com/images/I/51Z7604B8DL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg"
     },
     {
         isbn: "978-0914098911",
@@ -46,6 +50,7 @@ export const products = [
         genre: "Education",
         description: "Factor fearlessly, conquer the quadratic formula, and solve linear equations." ,
         price: 99.99,
+        photo: "https://images-na.ssl-images-amazon.com/images/I/31ESrmEz0-L._SX360_BO1,204,203,200_.jpg"
     },
 ];
     // {

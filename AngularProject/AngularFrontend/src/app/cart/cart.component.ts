@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
 
   items = this.cartService.getItems();
   // products: Product[] = [];
-  cartTotal = 99.99;
+  // cartTotal = 0;
 
   //counts = this.cartService.itemsCount();
   // total = this.cartService.Total()

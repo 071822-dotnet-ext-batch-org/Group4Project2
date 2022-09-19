@@ -35,7 +35,7 @@
       <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Total</th>
+        <!-- <th>Total</th> -->
         
         
         <!-- <th>Include?</th> -->
@@ -45,7 +45,7 @@
         <td type="number" ng-model="item.price" ng-required class="input-mini">{{item.price}}</td>
        
         
-        <td>{{(item.price | currency)}}</td>
+        <!-- <td>{{(item.price | currency)}}</td> -->
         <td>
           <a href ng-click="removeItem(index)"><span class="glyphicon glyphicon-remove" aria-checked="true"></span></a>
         </td>
@@ -53,8 +53,8 @@
       </tr>
       <tr class="row-total">
         <td colspan="4"></td>
-        <td>Total:</td>
-        <td>{{cartTotal}}</td>
+        <!-- <td>Total:</td>
+        <td>{{cartTotal}}</td> -->
       </tr>
     </table>
   </div>
@@ -273,7 +273,7 @@
       </div>
       <div>
         <button class="btn back-btn" [routerLink]="'/'">Back</button>
-        <button class="btn next-btn" (click)= 'onPayment()'>Confirm payment</button>
+        <button class="btn next-btn" (click)= 'onPayment()' [routerLink]="'/'">Confirm payment</button>
       </div>
     </div>
   </div>

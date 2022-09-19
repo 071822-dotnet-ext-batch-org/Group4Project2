@@ -4,10 +4,17 @@
       <h3>{{ product.name }}</h3>
       <h4>{{ product.price | currency }}</h4>
       <p>{{ product.description }}</p>
+      <img class="product-img" src="{{product.photo}}"><br>
+      <br>
       <button type="button" (click)="addToCart(product)">Buy</button>
     </div>
 
+    
+    
+    
     <button type="button" [routerLink]="'/'">
-        Back to List
-    </button>
-
+      Back to List
+    </button><br>
+    <br>
+    
+    <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/51phEoA5C9L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg"> -->

@@ -1,22 +1,17 @@
-nav {
-    background-color: #acdffa;
-    color: rgb(247, 245, 245);
-    display: inline;
-    font-size: 12pt;
-}
+
 
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    /* margin: 0;
+    padding: 0; */
+    /* overflow: hidden; */
 }
 
 li {
     margin: 0;
     padding: 0;
     float: right;
-    align-items: stretch;
+    align-items: right;
 
 }
 
@@ -30,3 +25,8 @@ h1 {
     text-align: center;
     font-size: 40pt;
     }
+
+div {
+    display:inline-block; 
+    justify-content:;
+}
